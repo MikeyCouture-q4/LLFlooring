@@ -1,0 +1,82 @@
+/// Local environment URL
+// $host: 'https://studiospacone.q4web.com/files' !default;
+$host: '..' !default;
+
+/// The default layout width for the site.
+/// @example 
+/// .module_container--outer {
+///   max-width: $layout-width;
+///   margin: 0 auto;
+/// }
+$layout-width: 1100px !default;
+
+$layout-large: 1200px !default;
+$layout-legacy: 1024px !default;
+$layout-medium: 768px !default;
+$layout-small: 480px !default;
+
+/// The default height of the header in mobile view
+$mobile-header-height: 100px !default;
+
+/// The default vertical spacing between modules within the content pane
+$module-vspace: 50px !default;
+
+/// The thin vertical spacing between modules within the content pane
+$module-vspace--thin: $module-vspace / 2 !default;
+
+/// The thick vertical spacing between modules within the content pane
+$module-vspace--thick: $module-vspace * 1.5 !default;
+
+/// The default font family for the headings.
+$heading-font: 'Dosis', sans-serif !default;
+
+/// The default font family for the site.
+$body-font: 'Open Sans', sans-serif !default;
+
+/// The default font size for the site.
+$body-size: 10px !default;
+
+/// The default icon font on the site (icomoon).
+$icon-font: 'q4-icons' !default;
+
+
+/// The default colour for text on the site
+$body-color: #858585 !default;
+
+/// The default brand colour for the site.
+$brand-color: #1ABC9C !default;
+$brand-color--mod: lighten(saturate(adjust-hue($brand-color, -126), 13.28), 8.24) !default;
+
+/// The alternate default brand colour for the site
+$brand-color--alt: #093843 !default;
+$brand-blue: darken(saturate(adjust-hue($brand-color--alt, 12), 23.68), 3.53) !default;
+
+/// The default light text colour for the site.
+$light-color: #FFFFFF !default;
+
+/// The default grey text colour for the site.
+$grey-color: #EEEEEE !default;
+
+/// The default grey text colour for the site.
+$grey-dark-color: #545B62 !default;
+
+/// The default dark text colour for the site.
+$dark-color: #000 !default;
+
+/// The default colour used to darken elements on the site.
+$darken-color: rgba(0,0,0,0.05) !default;
+
+/// The default colour used to lighten elements on the site.
+$lighten-color: rgba(255,255,255,0.05) !default;
+
+/// The default colour used for dark color overlay.
+$light-overlay: rgba(255,255,255, 0.6) !default;
+
+/// The default colour used for dark color overlay.
+$dark-overlay: rgba(0,0,0, 0.6) !default;
+
+/// The default colour for error messages.
+$error-color: #b72121 !default;
+
+/// The default colour for success messages.
+$success-color: #23a217 !default;

@@ -1,0 +1,65 @@
+/*---------- FAQ Module ----------*/
+.module-faq {
+    .toggle-all {
+        margin-bottom: 30px;
+    }
+    &_question {
+        margin-top: 0;
+        cursor: pointer;
+    }
+    &_answer {
+        padding: 15px;
+        margin: 0 0 15px 0;
+        background-color: $grey-color;
+        p {
+            &:first-child {
+                margin-top: 0;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .module_item {
+        padding: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        &:last-child {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        & > h4 {
+            margin: 0;
+            padding: 20px 0;
+            color: $brand-color--alt;
+            &:before {
+                @include icon('edc2');
+                float: right;
+                margin-left: 10px;
+            }
+        }
+        &.js--active {
+            & > h4 {
+                color: $brand-color;
+                &:before {
+                    content: unicode(edba);
+                }
+            }
+        }
+    }
+    .toggle-all {
+        .button {
+            &:before {
+                content: "Display all";
+            }
+            &:hover {
+                color: $light-color;
+            }
+        }
+        &.js--active {
+            .button {
+                &:before {
+                    content: "Hide all";
+                }
+            }
+        }
+    }
+}

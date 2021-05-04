@@ -1,0 +1,220 @@
+/*------ Slider ------*/
+.module {
+    &-slider {
+        .module_container--inner {
+            position: relative;
+            background-image: linear-gradient(rgba(0,0,0,0.75) 0%, rgba(255,255,255,0) 100%), url($host + '/design/hero-image.jpg');
+            background-position: center center;
+            background-size: cover;
+            min-height: 700px;
+            height: 1px;
+            display: flex;
+            flex-direction: column;
+            align-content: stretch;
+            justify-content: stretch;
+        }
+        .slick {
+            &-slider {
+                display: flex;
+                justify-content: stretch;
+                align-items: stretch;
+                height: 100%;
+                padding: 0;
+            }
+            &-track {
+                display: flex;
+                justify-content: stretch;
+                align-items: stretch;
+                height: 100%;
+            }
+            &-slide {
+                background-color: $lighten-color;
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+                height: auto;
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                & > div:not([class]) {
+                    width: 100%;
+                    align-items: stretch;
+                    justify-content: stretch;
+                }
+            }
+            &_autoplay-ctrl {
+                position: absolute;
+                bottom: 25px;
+                z-index: 11;
+                left: 20px;
+                button {
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    color: lighten(adjust-hue($brand-color, 5), 26.47);
+                    margin-right: 10px;
+                    vertical-align: middle;
+                    &:before {
+                        font-family: 'q4-icons' !important;
+                        speak: none;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-variant: normal;
+                        text-transform: none;
+                        line-height: 1;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                    }
+                }
+                &--play:before {
+                    content: "\ed85";
+                }
+                &--pause:before {
+                    content: "\ed86";
+                }
+            }
+            &-dots {
+                position: absolute;
+                bottom: 25px;
+                z-index: 11;
+                margin-left: 25px;
+                li:not(:last-child) {
+                    margin-right: 13px;
+                }
+                button {
+                    width: 37px;
+                    height: 2px;
+                    opacity: 0.44;
+                    background-color: lighten(adjust-hue($brand-color, 5), 26.47);
+                    border-radius: 0;
+                }
+            }
+            &-prev {
+                transform: translate(-40px, -50%);
+            }
+            &-next {
+                transform: translate(40px, -50%);
+            }
+            &-arrow:before {
+                color: lighten(adjust-hue($brand-color, 5), 26.47);
+                font-size: 40px;
+            }
+        }
+        .module_add-to-calendar-reveal {
+            color: $light-color;
+        }
+        &_item {
+            background-color: $lighten-color;
+            background-image: url($host + '/design/shutterstock_144849883.jpg');
+            background-position: center center;
+            background-size: cover;
+            padding: 150px 20px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+        &_item-inner {
+            width: 100%;
+            @include fit-and-center($layout-width);
+            margin-left: 0;
+            margin-right: 0;
+            &:after {
+                content: '';
+                display: block;
+                width: 17.5%;
+                height: 1px;
+                background: lighten(adjust-hue($brand-color, 5), 26.47);
+                margin-top: 20px;
+            }
+        }
+        &_controls {
+            width: 100%;
+            @include fit-and-center($layout-width);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        &_title {
+            h1 {
+                margin: 0;
+                color: lighten(saturate(adjust-hue($brand-color--alt, -6), 32.14), 2.55);
+            }
+        }
+        .module_loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &_description {
+            margin-top: 10px;
+            color: lighten(saturate(adjust-hue($brand-color--alt, -6), 32.14), 2.55);
+            .module_date-time {
+                color: inherit;
+            }
+            p {
+                margin: 10px 0;
+                &:first-child {
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                }
+            }
+            .module_links {
+                margin-top: 10px;
+                margin-bottom: 0;
+            }
+            .module_link {
+                color: lighten(saturate(adjust-hue($brand-color--alt, -6), 32.14), 2.55);
+            }
+        }
+        .button {
+            &.button--cta {
+                color: lighten(saturate(adjust-hue($brand-color--alt, -6), 32.14), 2.55);
+            }
+        }
+        @media screen and (max-width: 1360px) {
+            .slick {
+                &-prev,
+                &-next {
+                    transform: translate(0, -50%);
+                }
+            }
+        }
+        @include layout-legacy {
+            .module_container--inner {
+                height: auto;
+                min-height: auto;
+            }
+            &_item {
+                padding: 100px 0 75px 0;
+            }
+            .slick {
+                &-dots {
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                &-arrow {
+                    top: auto;
+                    bottom: 0;
+                    transform: none;
+                    &:before {
+                        font-size: 30px;
+                    }
+                }
+                &-prev {
+                    margin-left: $gutter;
+                }
+                &-next {
+                    margin-right: $gutter;
+                }
+            }
+            &_controls {
+                top: auto;
+                bottom: 20px;
+            }
+        }
+    }
+}

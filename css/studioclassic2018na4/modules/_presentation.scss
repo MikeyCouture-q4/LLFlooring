@@ -1,0 +1,21 @@
+/*------ Presentation Module ------*/
+.module-presentation {
+    .module {
+        &_body {
+            display: none;
+        }
+        &_item {
+            padding: 0;
+            border: 0 none;
+            & ~ .module_item {
+                border-top: 0 none;
+            }
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+            &-wrap {
+                padding: 30px 30px 10px 30px;
+            }
+        }
+    }
+}

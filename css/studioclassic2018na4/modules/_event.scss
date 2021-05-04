@@ -1,0 +1,428 @@
+/*--------- Event Module ---------*/
+.module-event {
+    // Event List Module
+    .module {
+        &_location,
+        &_speakers h4,
+        &_body {
+            display: none;
+        }
+        &_item {
+            padding: 0;
+            border: 0 none;
+            & ~ .module_item {
+                border-top: 0 none;
+            }
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+            &-wrap {
+                padding: 30px 30px 10px 30px;
+            }
+        }
+        &_links {
+            margin-bottom: 0;
+            &.module_links--columns {
+                & > *:not(ul) {
+                    width: 50%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    @include layout-small {
+                        display: block;
+                        width: auto;
+                    }
+                }
+                & > ul li {
+                    width: 50%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    @include layout-small {
+                        display: block;
+                        width: auto;
+                    }
+                }
+            }
+            &.module_links--columns-3 {
+                & > *:not(ul) {
+                    width: 33.33%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    @include layout-large {
+                        width: 50%;
+                    }
+                    @include layout-legacy {
+                        width: 33.33%;
+                    }
+                    @media only screen and (max-width: 640px) {
+                        width: 50%;
+                    }
+                    @include layout-small {
+                        display: block;
+                        width: auto;
+                    }
+                }
+                & > ul li {
+                    width: 33.33%;
+                    display: inline-block;
+                    vertical-align: middle;
+                    @include layout-large {
+                        width: 50%;
+                    }
+                    @include layout-legacy {
+                        width: 33.33%;
+                    }
+                    @media only screen and (max-width: 640px) {
+                        width: 50%;
+                    }
+                    @include layout-small {
+                        display: block;
+                        width: auto;
+                    }
+                }
+            }
+        }
+        &_links--separator {
+            > *:not(:first-child):before {
+                content: '|';
+                margin: 0 10px;
+                font-size: 14px;
+                color: $brand-color--alt;
+                vertical-align: top;
+                @include layout-small {
+                    content: none;
+                }
+            }
+            .module_link {
+                margin-right: 0;
+            }
+            .module_attachments li:not(:first-child):before,
+            .module_financials li:not(:first-child):before {
+                content: '|';
+                margin: 0 10px;
+                font-size: 14px;
+                color: $brand-color--alt;
+                vertical-align: top;
+                @include layout-small {
+                    content: none;
+                }
+            }
+        }
+    } // Details Module
+    &-details {
+        .module {
+            &_speakers h4 {
+                display: none;
+            }
+            &_webcast:empty {
+                display: none;
+            }
+            &_links {
+                margin-bottom: 0;
+                &.module_links--columns {
+                    & > *:not(ul) {
+                        width: 50%;
+                        display: inline-block;
+                        vertical-align: middle;
+                        @include layout-legacy {
+                            display: inline;
+                            width: auto;
+                        }
+                        @include layout-small {
+                            display: block;
+                            width: auto;
+                        }
+                    }
+                    & > ul li {
+                        width: 50%;
+                        display: inline-block;
+                        vertical-align: middle;
+                        @include layout-legacy {
+                            display: inline;
+                            width: auto;
+                        }
+                        @include layout-small {
+                            display: block;
+                            width: auto;
+                        }
+                    }
+                }
+            }
+            &_links--separator {
+                > *:not(:first-child):before {
+                    content: '|';
+                    margin: 0 10px;
+                    font-size: 14px;
+                    color: $brand-color--alt;
+                    vertical-align: top;
+                    @include layout-small {
+                        content: none;
+                    }
+                }
+                > .js--hidden:first-child + *:before {
+                    content: none;
+                }
+                .module_link {
+                    margin-right: 0;
+                }
+                .module_attachments li:not(:first-child):before,
+                .module_financials li:not(:first-child):before {
+                    content: '|';
+                    margin: 0 10px;
+                    font-size: 14px;
+                    color: $brand-color--alt;
+                    vertical-align: top;
+                    @include layout-small {
+                        content: none;
+                    }
+                }
+                // fix event details
+                .module_add-to-calendar.js--hidden + .module_webcast:before,
+                .module_add-to-calendar + .module_webcast:empty + *:before {
+                    content: none;
+                }
+            }
+        }
+        @include layout-medium {
+            .module {
+                &_reminder {
+                    .grid_col {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    } // Event Home Widget
+    &-home {
+        height: 100%;
+        position: relative;
+        @include layout-legacy {
+            margin-top: 25px;
+            margin-left: -25px;
+            margin-right: -25px;
+            padding-left: 25px;
+            padding-right: 25px;
+            background: $grey-color;
+        }
+        .module_container--content {
+            margin-bottom: 50px;
+        }
+        .module {
+            &_item {
+                padding: 0;
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+                & ~ .module_item {
+                    border-top: 1px solid rgba(0, 0, 0, 0.1);
+                    padding-top: 30px;
+                    margin-top: 20px;
+                }
+            }
+        }
+        &.background--grey {
+            .module {
+                &_item-wrap {
+                    background-color: $light-color;
+                }
+            }
+        }
+        .button--cta {
+            position: absolute;
+            bottom: 60px;
+        }
+    } // Event Latest Widget
+    &-latest {
+        .module {
+            &_links {
+                margin: 0;
+            }
+        }
+        &.background--grey {
+            .module {
+                &_item-wrap {
+                    background-color: $light-color;
+                }
+            }
+        }
+    } // Upcoming Event Module
+    &-upcoming {
+        .module {
+            &_nav {
+                display: none;
+            }
+            &_item {
+                & ~ .module_item {
+                    border-top: 1px solid rgba(0, 0, 0, 0.1);
+                    padding-top: 30px;
+                    margin-top: 20px;
+                }
+            }
+        }
+    } // Event Calendar Widget
+    &-calendar {
+        padding-right: calc( 100% - 500px );
+        &_event-container {
+            margin-top: 20px;
+        }
+        &_splash {
+            i {
+                @include font-size(40px);
+                color: $brand-color;
+            }
+            p {
+                @include font-size(14px);
+                line-height: 1.2;
+            }
+        }
+        &_controls {
+            padding: 20px 15px;
+            background-color: $brand-color;
+            color: $light-color;
+            text-align: center;
+            @include font-size(24px);
+            button {
+                font-size: inherit;
+                color: inherit;
+                background-color: transparent; 
+                border: 0;
+                padding: 5px 0;
+            }
+        }
+        &_previous-month,
+        &_month,
+        &_next-month {
+            display: inline-block;
+        }
+        &_previous-month,
+        &_next-month {
+            cursor: pointer;
+        }
+        &_previous-month {
+            float: left;
+        }
+        &_next-month {
+            float: right;
+        }
+        &_day-container {
+            text-align: center;
+            border: 1px solid $grey-color;
+            padding-bottom: 10px;
+            display: table;
+            table-layout: fixed;
+            width: 100%; 
+        }
+        &_week {
+            display: table-row;
+            background-color: $grey-color;
+            margin-bottom: 10px;
+        }
+        &_days {
+            display: table-row-group;
+            & > div[role="row"] {
+                display: table-row;
+            }
+        }
+        &_day {
+            display: table-cell;
+            position: relative;
+            width: 14.285%;
+            margin: 0;
+            padding: 10px 0;
+            @include layout-small {
+                padding: 5px 0;
+            }
+            & > span {
+                display: block;
+                max-width: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 5px 0;
+                text-align: center;
+                border-radius: 3px;
+            }
+            &--name {
+                padding: 10px 0;
+                border: none;
+                @include layout-small {
+                    padding: 10px 0;
+                }
+            }
+            &--today:not(.module-event-calendar_day--adjacent-month) {
+                & > span {
+                    background-color: $brand-color--alt;
+                    color: $light-color;
+                }
+            }
+            &--event {
+                cursor: pointer;
+                & > span {
+                    background-color: $brand-color;
+                    color: $light-color;
+                }
+            }
+            &--selected {
+                
+            }
+            &--adjacent-month {
+                color: rgba($body-color, 0.1);
+                pointer-events: none;
+                &:after {
+                    content: none;
+                }
+            }
+            @include layout-small {
+                display: inline-block;
+            }
+        }
+        .module {
+            &_add-to-calendar {
+                margin: 0;
+            }
+        }
+        &_legend {
+            ul {
+                padding: 0;
+                margin: 15px 0 25px 0;
+            }
+            li {
+                display: inline-block;
+                vertical-align: top;
+                position: relative;
+                padding-left: 25px;
+                margin-right: 30px;
+                line-height: 16px;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    display: block;
+                    width: 16px;
+                    height: 16px;
+                    background-color: $brand-color;
+                    border-radius: 3px;
+                }
+                &.module-event-calendar_legend-item--current:before {
+                    background-color: $brand-color--alt;
+                }
+            }
+        }
+        @include layout-legacy {
+            padding-right: 0;
+        }
+        @include layout-medium {
+            display: block;
+            &_calendar-container,
+            &_event-container {
+                display: block;
+                width: 100%;
+            }
+            &_calendar-container {
+                padding-right: 0;
+            }
+            &_event-container {
+                margin-top: 20px;
+            }
+        }
+    }
+}

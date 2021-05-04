@@ -1,0 +1,150 @@
+/*- Committee Composition Widget -*/
+.module-committee {
+    .module {
+        &_container {
+            &--desktop {
+                @include layout-medium {
+                    display: none;
+                }
+            }
+            &--tablet {
+                display: none;
+                @include layout-medium {
+                    display: block;
+                }
+            }
+        }
+        &_header {
+            display: block;
+            font-weight: normal;
+            background: $grey-dark-color;
+            color: $light-color;
+            font-size: 2rem;
+            font-family: $body-font--alt;
+            &--desktop {
+                display: table-header-group;
+            }
+        }
+        &_item {
+            padding: 0;
+            & ~ .module_item {
+                border-top: 1px solid rgba(0,0,0,0.1);
+            }
+        }
+        &_items-container {
+            padding: 15px;
+            margin: 0 0 15px 0;
+            background: $grey-color;
+        }
+    }
+    .grid_col {
+        padding: 20px 15px;
+        text-align: center;
+        &:first-child {
+            text-align: left;
+        }
+    }
+    .module_container--tablet {
+        .grid_col {
+            padding: 0;
+        }
+        .module-committee_name {
+            display: inline-block;
+            padding: 10px 0;
+        }
+        .module-committee_icon {
+            display: block;
+            text-align: right;
+            padding: 10px 0;
+        }
+        .module_header {
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 0;
+            cursor: pointer;
+            margin: 0;
+            padding: 8px 20px;
+            position: relative;
+            border: 0 none;
+            color: $grey-dark-color;
+            background: transparent;
+        }
+        .module_items-container {
+            background: none;
+            margin: 0;
+            padding: 15px 20px;
+        }
+        .module_item:not(:last-child){
+            border-bottom: 1px dotted #efefef;
+        }
+    }
+    &_category {
+        padding: 0;
+        border: 1px solid #f1f1f1;
+        margin-bottom: 5px;
+        .module_header .grid_col:first-child:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 0;
+            transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            bottom: 0;
+            left: 23px;
+            background: #333;
+            opacity: 0;
+        }
+        &.js--active {
+            background: linear-gradient(#f1f1f1, #fff);
+            border-image: linear-gradient(to bottom, #f1f1f1, #fff) 1 100%;
+            border-bottom: none;
+            .module_header .grid_col:first-child:after {
+                background: #9b6e01;
+                width: 40px;
+                left: 20px;
+                opacity: 1;
+            }
+        }
+        &:last-child {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .module_item:nth-child(even) {
+            background: transparent;
+        }
+    }
+    &_trigger:before {
+        content: "\edc2";
+        font-size: 1.4rem;
+        font-weight: bold!important;
+        margin-top: 8px;
+        float: right;
+        @at-root .module-committee .js--active & {
+            content: "\edba";
+        }
+    }
+    &_custom-role {
+        margin-left: 5px;
+    }
+    &_bio {
+        padding: 0 15px 20px;
+        text-align: left;
+        p {
+            margin: 0;
+            &:not(:last-of-type) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+    &_legend-container {
+        padding: 20px 15px;
+    }
+    &_legend {
+        display: inline-block;
+        margin-right: 30px;
+        margin-bottom: 5px;
+        [class*="q4-icon_"] {
+            margin-right: 5px;
+        }
+    }
+}

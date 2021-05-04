@@ -1,0 +1,208 @@
+/*------ Slider ------*/
+.module {
+    &-slider {
+        .module_container--inner {
+            position: relative;
+            background: $lighten-color url($host + '/design/shutterstock_144849883.jpg') center center;
+            background-size: cover;
+            min-height: 700px;
+            height: 1px;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-content: stretch;
+            justify-content: stretch;
+        }
+        .slick {
+            &-slider {
+                display: flex;
+                justify-content: stretch;
+                align-items: stretch;
+                height: 100%;
+                padding: 0;
+            }
+            &-track {
+                display: flex;
+                justify-content: stretch;
+                align-items: stretch;
+                height: 100%;
+            }
+            &-slide {
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+                height: auto;
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+                min-height: auto;
+                & > div:not([class]) {
+                    width: 100%;
+                    align-items: stretch;
+                    justify-content: stretch;
+                }
+            }
+            &_autoplay-ctrl {
+                position: absolute;
+                bottom: 25px;
+                z-index: 11;
+                left: 20px;
+                button {
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    color: white;
+                    margin-right: 10px;
+                    vertical-align: middle;
+                    &:before {
+                        font-family: 'q4-icons' !important;
+                        speak: none;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-variant: normal;
+                        text-transform: none;
+                        line-height: 1;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                    }
+                }
+                &--play:before {
+                    content: "\ed85";
+                }
+                &--pause:before {
+                    content: "\ed86";
+                }
+            }
+            &-dots {
+                position: absolute;
+                bottom: 25px;
+                margin-left: 25px;
+                z-index: 11;
+                li:not(:last-child) {
+                    margin-right: 13px;
+                }
+                button {
+                    width: 6px;
+                    height: 6px;
+                    opacity: 0.7;
+                }
+            }
+            &-prev {
+                transform: translate(20px, -50%);
+            }
+            &-next {
+                transform: translate(-20px, -50%);
+            }
+            &-arrow:before {
+                font-size: 40px;
+            }
+        }
+        .module_add-to-calendar-reveal {
+            color: $light-color;
+        }
+        &_item {
+            background-color: $lighten-color;
+            background-image: url($host + '/design/shutterstock_144849883.jpg');
+            background-position: center center;
+            background-size: cover;
+            padding: 150px 20px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+        &_item-inner {
+            width: 100%;
+            @include fit-and-center($layout-width);
+            margin-left: 0;
+            margin-right: 0;
+            padding-right: 70px;
+            padding-left: 70px;
+            &:after {
+                content: '';
+                display: block;
+                width: 17.5%;
+                height: 1px;
+                background: white;
+                margin: 30px auto 0 auto;
+            }
+        }
+        &_controls {
+            width: 100%;
+            @include fit-and-center($layout-width);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        &_title {
+            h1 {
+                margin: 0;
+            }
+        }
+        .module_loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &_description {
+            margin-top: 10px;
+            .module_date-time {
+                color: inherit;
+                font-size: inherit;
+            }
+            p {
+                margin: 10px 0;
+                &:first-child {
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                }
+            }
+            .module_links {
+                margin-top: 10px;
+                margin-bottom: 0;
+            }
+        }
+        .button {
+            &.button--cta {
+                color: $light-color;
+            }
+        }
+        @include layout-legacy {
+            .module_container--inner {
+                height: auto;
+                min-height: auto;
+            }
+            .slick {
+                &-dots {
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                &-arrow {
+                    top: auto;
+                    bottom: 0;
+                    transform: none;
+                    &:before {
+                        font-size: 30px;
+                    }
+                }
+                &-prev {
+                    margin-left: $gutter;
+                }
+                &-next {
+                    margin-right: $gutter;
+                }
+            }
+            &_item-inner {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            &_controls {
+                top: auto;
+                bottom: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+/*- MailingList Subscribe Module -*/
+.module-subscribe {
+    &_table {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        tbody {
+            width: 100%;
+            display: block;
+        }
+    }
+    &_form {
+        // Markup Space fix
+        font-size: 0;
+        tr {
+            display: inline-block;
+            width: 50%;
+            margin-bottom: 20px;
+            vertical-align: top; // Markup Space Fix
+            font-size: 1.6rem;
+            &:nth-child(even) {
+                padding-left: 10px;
+            }
+            &:nth-child(odd) {
+                padding-right: 10px;
+            } // Specific Inputs
+            &.module-subscribe_notes-text {
+                margin: 0;
+            }
+            &.module-subscribe_notes-text,
+            &.module-subscribe_notes-input {
+                display: block;
+                width: 100%;
+                padding: 0;
+            }
+            @include layout-medium {
+                width: 100%;
+                &:nth-child(even) {
+                    padding-left: 0;
+                }
+                &:nth-child(odd) {
+                    padding-right: 0;
+                }
+            }
+        }
+        td {
+            display: block;
+        }
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+        }
+    }
+    &_mailing-list {
+        font-size: 1.4rem;
+        line-height: 1.1;
+        tr {
+            &.module-subscribe_list-header {
+                td {
+                    padding-bottom: 15px;
+                }
+            } // Checkbox Table
+            table {
+                td {
+                    padding-bottom: 10px;
+                }
+                tr:last-child td {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    } // Required Star
+    .module_required {
+        font-size: 1.4rem;
+    }
+    .CaptchaContainer {
+        width: 50%;
+        @include layout-medium {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,363 @@
+/*--- Financial Report Modules ---*/
+.module-financial {
+    &-year {
+        .module {
+            &_options {
+                text-align: left;
+            }
+            &_cover {
+                margin-bottom: 15px;
+                img {
+                    display: inline-block;
+                    vertical-align: top;
+                    border: 1px solid $brand-color--alt;
+                    @at-root .module-financial-year .module-financial_annual-archive .module_cover img {
+                        max-width: 180px;
+                        @include layout-legacy {
+                            max-width: none;
+                        }
+                    }
+                }
+            }
+            &_item {
+                padding: 0;
+                &~.module_item {
+                    border: none;
+                }
+            }
+            &_links {
+                margin: 0;
+            }
+        }
+        .module-financial {
+            &_year {
+                text-align: center;
+            }
+            &_annual-archive {
+                @include layout-medium {
+                    margin-top: 25px;
+                }
+            }
+        }
+    }
+    &-quarter {
+        .module {
+            &_container--content {
+                border: 1px solid $grey-color;
+                border-radius: 5px;
+            }
+            &_item {
+                padding: 0;
+                & + .module_item {
+                    border-top: 1px solid $grey-color;
+                }
+                &.js--active {
+                    h5 {
+                        color: $brand-color;
+                        &:before {
+                            content: "\edba";
+                        }
+                    }
+                }
+            }
+            &_links {
+                padding: 0 20px 15px 20px;
+                & > .grid_col {
+                    display: inline-block;
+                    padding-right: 20px;
+                }
+            }
+            &_link {
+                margin-bottom: 10px;
+                font-weight: normal;
+                text-transform: none;
+            }
+        }
+        .module-financial {
+            &_year-text {
+                padding: 15px 20px;
+                margin: 0;
+                cursor: pointer;
+                &:before {
+                    color: $brand-color;
+                    float: right;
+                    margin-top: 8px;
+                    @include icon("edc2");
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    &-table {
+        &_header {
+            background-color: $brand-color;
+            color: $light-color;
+            font-family: $heading-font;
+            @include font-size(17px);
+            &-year-container {
+                text-align: center;
+            }
+            &-year,
+            &-category.grid_col {
+                padding: 20px 15px;
+            }
+        }
+        &_body {
+            &-row {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                &:nth-child(even) {
+                    background-color: $grey-color;
+                }
+            }
+            &-year-container {
+                text-align: center;
+            }
+            &-year,
+            &-category.grid_col {
+                padding: 20px 15px;
+            }
+        }
+        &_item {
+            display: inline-block;
+            margin-right: 15px;
+            font-family: $heading-font;
+            font-weight: normal;
+            &~.module_item {
+                margin-right: 5px;
+            }
+            &--empty {
+                opacity: 0.1;
+            }
+            @include layout-medium() {
+                margin-right: 10px;
+            }
+            @include layout-small() {
+                margin: 5px;
+            }
+        }
+        .slick {
+            &-slider {
+                display: inline-block;
+                padding: 0;
+            }
+            &-slide:focus {
+                outline: none;
+            }
+            &-arrow {
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                cursor: pointer;
+                z-index: 10;
+                color: $light-color;
+            }
+            &-prev {
+                left: 10px;
+            }
+            &-next {
+                right: 10px;
+            }
+            &-disabled {
+                opacity: 0.1;
+                cursor: default;
+            }
+        }
+    }
+    &-mashup {
+        &_news {
+            > h3 {
+                margin-top: 0;
+            }
+            @include layout-medium {
+                margin-bottom: 30px;
+            }
+        }
+        .module_body {
+            max-height: 300px;
+            overflow: hidden;
+            position: relative;
+            &>*:first-child,
+            &>style+p {
+                margin-top: 0;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 50px;
+                z-index: 1;
+                background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%);
+                background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%);
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70ffffff', endColorstr='#ffffff', GradientType=0);
+            }
+        }
+        h4 {
+            margin-top: 5px;
+        }
+        .module-financial-mashup_documents .module_links {
+            &+h4 {
+                margin-top: 30px;
+            }
+            &>div {
+                background-color: $grey-color;
+                padding: 15px;
+                margin-bottom: 1px;
+            }
+            .module_link {
+                margin: 0;
+            }
+        }
+        .button {
+            width: 100%;
+            min-width: auto;
+            &.js--selected {
+                background: $brand-color--alt;
+                color: #fff;
+            }
+        }
+        @media only screen and (min-width: 769px) {
+            .module_options--mobile {
+                display: none;
+            }
+        }
+        @include layout-medium {
+            .module_options--desktop {
+                display: none;
+            }
+        }
+    }
+    &-latest {
+        .module_container--inner {
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.06);
+            position: relative;
+            padding: 40px;
+        }
+        .grid_col {
+            margin-bottom: 25px;
+        }
+        .module {
+            &_link {
+                margin: 0;
+                &-text {
+                    display: block;
+                    margin: 15px 0 0;
+                    text-transform: none;
+                    color: $body-color;
+                }
+                &:hover {
+                    .module_link-text {
+                        color: $brand-color;
+                    }
+                }
+            }
+        }
+        .q4icons_icon:before {
+            display: inline-block;
+            font-size: 55px;
+            padding: 0;
+            text-align: center;
+            @include layout-medium {
+                font-size: 45px;
+            }
+        }
+        .module-financial {
+            &_type-year {
+                font-family: $heading-font;
+                color: $light-color;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 170px;
+                height: 193px;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 297.9 337.5'%3E%3ClinearGradient id='grad1' x1='0' x2='1' gradientTransform='rotate(90)'%3E%3Cstop offset='0%25' stop-color='%23007FA9' /%3E%3Cstop offset='100%25' stop-color='%23006080' /%3E%3C/linearGradient%3E%3Cstyle type='text/css'%3E .st0%7Bfill: url(%23grad1); %3C/style%3E%3Cdefs%3E%3C/defs%3E%3Cpath class='st0' d='M0,94.9v147.6c0,7.5,4,14.5,10.6,18.3l127.8,73.8c6.5,3.8,14.6,3.8,21.1,0l127.8-73.8 c6.5-3.8,10.6-10.7,10.6-18.3V94.9c0-7.5-4-14.5-10.6-18.3L159.5,2.8c-6.5-3.8-14.6-3.8-21.1,0L10.6,76.6C4,80.4,0,87.4,0,94.9z'/%3E%3C/svg%3E");
+                background-size: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+            &_type-text {
+                @include font-size(55px);
+                line-height: 1;
+                font-weight: 600;
+            }
+            &_year-text {
+                @include font-size(26px);
+                line-height: 1;
+            }
+        }
+        .button {
+            margin-top: 30px;
+        }
+        @media only screen and (min-width: 1025px) {
+            .module_container--inner {
+                margin-left: 85px;
+            }
+            .grid {
+                padding-left: 85px;
+            }
+            .grid_col:first-child {
+                width: auto;
+                min-height: auto;
+                margin: 0;
+                padding: 0;
+            }
+            .module-financial {
+                &_type-year {
+                    padding: 0;
+                    margin: 0;
+                    left: -85px;
+                }
+            }
+        }
+        @include layout-legacy {
+            .module_container--inner {
+                margin-left: 0;
+            }
+            .module-financial {
+                &_type-year {
+                    position: static;
+                    transform: none;
+                    margin: 0 auto 25px auto;
+                    width: 100px;
+                    height: 110px;
+                }
+                &_type-text {
+                    @include font-size(27px);
+                    line-height: 1.25;
+                    font-weight: 600;
+                }
+                &_year-text {
+                    @include font-size(16px);
+                    line-height: 1.25;
+                }
+            }
+            .module {
+                &_links {
+                    border-left: 0;
+                }
+                &_link {
+                    margin: 0 0 15px;
+                }
+            }
+            .grid_col {
+                vertical-align: middle;
+            }
+        }
+        @include layout-medium {
+            .module {
+                &_item {
+                    &>div:first-child {
+                        margin-bottom: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

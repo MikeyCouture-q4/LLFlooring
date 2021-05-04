@@ -1,0 +1,330 @@
+/*------ Navigation Modules ------*/
+.nav {
+    &_close {
+        display: none;
+    }
+    &_guide {
+        @include sr-only();
+    }
+    @include layout-legacy {
+        &_guide {
+            display: none;
+        }
+    }
+    a[tabindex="-1"]:focus { /* navigation needs this for accessibility purpose  */
+        outline-width: 2px !important;
+        outline-style: dotted !important;
+        outline-color: inherit !important;
+    } // Header Pane Nav
+    &--main {
+        text-align: right;
+        @include font-size(13px);
+        li {
+            display: inline-block;
+            position: relative;
+            a {
+                display: block;
+                padding: 10px 8px;
+                color: $body-color;
+                font-weight: normal;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                @include layout-large {
+                    padding: 10px 6px;
+                    letter-spacing: 0;
+                }
+            }
+            &.selected>a,
+            &.expanded:not(.home)>a,
+            a:hover,
+            a:focus {
+                color: $brand-color;
+            }
+        }
+        .level2 {
+            display: inline-block;
+            vertical-align: top;
+            & > li {
+                padding: 10px 0;
+            }
+        }
+        .level3 {
+            display: none;
+            background-color: $brand-color;
+            padding: 20px 10px;
+            text-align: left;
+            white-space: nowrap;
+            position: absolute;
+            z-index: 200;
+            left: calc(50% - 30px);
+            top: 100%;
+            min-width: 200px;
+            &:before {
+                content: '';
+                border-bottom: 11px solid $brand-color;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                position: absolute;
+                top: -10px;
+                left: 15px;
+            }
+            @at-root {
+                .nav--main li:last-child > .level3 {
+                    right: calc(50% - 30px);
+                    left: auto;
+                    &:before {
+                        left: auto;
+                        right: 15px;
+                    }
+                }
+                .nav--main li.sfHover > .level3 {
+                    display: block;
+                }
+            }
+            li {
+                display: block;
+                &.selected>a,
+                &.expanded>a {
+                    color: $light-color;
+                }
+            }
+            a {
+                color: $light-color;
+                padding: 10px;
+                text-transform: none;
+                &:hover,
+                &:focus {
+                    color: $light-color;
+                    text-decoration: underline;
+                }
+            }
+        }
+        .js--expanded .level3 {
+            display: block;
+        }
+    } // Navigation Page Nav
+    &--secondary {
+        background: $brand-color;
+        text-align: center;
+        line-height: 1.25;
+        letter-spacing: 1px;
+        @at-root {
+            .js--sticky .nav--secondary {
+                position: fixed;
+                width: 100%;
+                z-index: 200;
+                box-shadow: rgba($dark-color, 0.2) 0px 2px 20px;
+            }
+        }
+        @include layout-legacy {
+            display: none;
+        }
+        .level1 {
+            @include fit-and-center($layout-width);
+            @include layout-legacy {
+                max-width: none;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            &>li {
+                display: none;
+                &.selected,
+                &.expanded {
+                    display: block;
+                    &>a {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .level2 {
+            &>li {
+                display: none;
+                &.selected,
+                &.expanded {
+                    display: block;
+                    &>a {
+                        display: none;
+                    }
+                }
+                &.has-children:focus .level3[style*="none"] {
+                    display: block !important;
+                }
+            }
+        }
+        .level3 {
+            text-align: center;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: stretch;
+            justify-content: center;
+            @at-root & {
+                @media screen and (min-width: 1025px) {
+                    /* to override superfish on desktop */
+                    display: flex !important;
+                    opacity: 1 !important;
+                }
+            }
+            &>li {
+                display: inline-block;
+                vertical-align: top;
+                a {
+                    color: $light-color;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 15px 25px;
+                    &:hover,
+                    &:focus {
+                        background: darken($brand-color, 7.5%);
+                    }
+                }
+                &.selected {
+                    a {
+                        background: darken($brand-color, 7.5%);
+                    }
+                }
+            }
+        }
+    }
+    &--mobile {
+        display: none;
+        text-align: right;
+        font-size: 1.3rem;
+        line-height: 1.25;
+        letter-spacing: 1px;
+        @include layout-legacy {
+            display: block;
+        }
+        a {
+            display: block;
+            position: relative;
+            padding: 10px 20px;
+            color: #474747;
+            text-transform: uppercase;
+            border-bottom: 1px solid $grey-color;
+        }
+        .level1 {
+            &>li.expanded,
+            &>li.selected {
+                display: block;
+                &>a {
+                    display: block;
+                }
+            }
+        }
+        .level2 {
+            > li {
+                display: block;
+                margin: 0 -30px 0 -20px;
+                a {
+                    margin: 0 30px 0 20px;
+                }
+                &.has-children>a:after {
+                    // content: "\edc2";
+                    @include icon('edc2');
+                    color: $brand-color;
+                    position: absolute;
+                    right: 3px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 12px;
+                }
+                &.expanded,
+                &.selected {
+                    background-color: $grey-color;
+                    &>a {
+                        display: block;
+                    }
+                }
+                &.js--expanded {
+                    >a:after {
+                        content: unicode(edba);
+                    }
+                    .level3 {
+                        display: block;
+                    }
+                }
+                & > a:focus + .level3 {
+                    display: block;
+                }
+            }
+        }
+        .level3 {
+            background-color: $brand-color;
+            position: relative;
+            text-align: left;
+            padding: 15px 0;
+            padding-left: 25%;
+            display: none;
+            &:before {
+                content: '';
+                top: -10px;
+                position: absolute;
+                right: 90px;
+                border-bottom: 11px solid $brand-color;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+            }
+            & > li {
+                display: block;
+                &.selected a {
+                    background: transparent;
+                }
+                a {
+                    color: $light-color;
+                    padding: 10px;
+                    text-transform: none;
+                    border-bottom: 0 none;
+                    &:hover,
+                    &:focus {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    } // Page Not Found
+    &--sitemap {
+        @include fit-and-center($layout-width);
+        padding-top: $module-vspace;
+        padding-bottom: $module-vspace;
+        a {
+            display: inline-block;
+        }
+        .level1,
+        .level2 {
+            &>li:not(:last-of-type) {
+                margin-bottom: 35px;
+            }
+            &>li {
+                &>a,
+                &>a:visited {
+                    margin-bottom: 15px;
+                    @include font-size(24px);
+                    color: $dark-color;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .level3 {
+            &>li {
+                padding: 5px 0;
+                &>a {
+                    @include font-size(14px);
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .level2 {
+            &>li>a {
+                margin-bottom: 5px;
+            }
+        }
+        .level3 {
+            &>li {
+                padding-left: 15px;
+            }
+        }
+    }
+}

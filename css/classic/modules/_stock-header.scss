@@ -1,0 +1,62 @@
+/*------ Stock Header Module -----*/
+
+.module-stock-header {
+    line-height: 1;
+    text-align: right;
+    @include layout-legacy {
+        text-align: center;
+    }
+    .module_container--outer {
+        display: inline-block;
+        padding: 40px 55px;
+        background: $dark-overlay;
+        text-align: center;
+    }
+    &_description1 {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 16px;
+    }
+    &_stock-price {
+        &:before {
+            content: '$';
+        }
+        display: block;
+        margin-bottom: 8px;
+        font-size: 4.5rem;
+        color: $light-color;
+    }
+    &_change,
+    &_percent-change {
+        display: inline-block;
+        margin-bottom: 24px;
+        font-size: 2rem;
+    }
+    &_percent-change {
+        &:before {
+            content: '(';
+        }
+        .module-stock-header_indicator {
+            display: none;
+        }
+        &:after {
+            content: ')';
+        }
+    }
+    &_volume {
+        &:before {
+            content: 'Volume ';
+            font-weight: bold;
+        }
+        display: block;
+        margin-bottom: 32px;
+    }
+    &_description3,
+    &_date {
+        display: block;
+        font-size: 1.2rem;
+    }
+    &_volume-text {
+        display: none;
+    }
+}

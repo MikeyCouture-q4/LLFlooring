@@ -1,0 +1,226 @@
+/*-------- Search Modules --------*/
+.module-search {
+    &_toggle {
+        margin: 0;
+        @include font-size(16px);
+        position: absolute;
+        right: 35px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $brand-color--alt;
+        cursor: pointer;
+        &.js--active {
+            color: $brand-color;
+        }
+    }
+    &_input[type="text"] {
+        opacity: 0;
+        visibility: hidden;
+        border-color: $brand-color;
+        background-color: $brand-color;
+        color: $light-color;
+        width: 100%;
+        max-width: 380px;
+        padding: 15px 20px;
+        margin: 0;
+        @include font-size(18px);
+        text-transform: uppercase;
+        position: absolute;
+        top: calc(100% + 25px);
+        right: 25px;
+        transition: 0.3s ease-in-out;
+        @at-root .js--header-small & {
+            top: 100%;
+        }
+        &.js--revealed {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &_button {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 15px;
+        height: 15px;
+        padding: 0;
+        border: 0;
+        background: transparent url($host + '/design/svg/q4-icon_buttons.svg');
+        background-position: 0 -100%;
+        background-size: 300%;
+        font-size: 0;
+        cursor: pointer;
+
+    }
+    &-result {
+        &_link {
+            margin-bottom: 15px;
+        }
+        &_description {
+            display: block;
+            margin-bottom: 15px;
+            &:after {
+                content: "...";
+            }
+        }
+        &_url {
+            display: none;
+        }
+    }
+    &-results {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding-left: 25px;
+        padding-right: 25px;
+        .form_fields {
+            &-right input {
+                width: 100%;
+                border-color: #006fba;
+                color: #979797;
+            }
+        }
+        .form_field {
+            margin-bottom: 25px;
+            &--date {
+                position: relative;
+                &:after {
+                    content: "\e921";
+                    position: absolute;
+                    top: 34px;
+                    right: 15px;
+                    font-family: 'q4-icons' !important;
+                    speak: none;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1;
+                    color: #006fba;
+                    clear: both;
+                    display: table;
+                    font-size: 16px;
+                }
+            }
+            &--search {
+                margin-bottom: 35px;
+            }
+        }
+        .form_label {
+            color: #545B62;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 7px;
+        }
+        .form_select {
+            color: #979797;
+            font-size: 14px;
+            width: 100%;
+            border-color: #979797;
+            display: block !important;
+            & + .sbHolder {
+                display: none;
+            }
+        }
+        .form_input {
+            width: 100%;
+            border: 1px solid #979797;
+            color: #979797;
+            padding: 13px 20px;
+            display: block;
+            font-family: $body-font;
+            font-size: 1.4rem;
+            border-radius: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        &_link {
+            text-transform: uppercase;
+            color: #105CA3;
+            font-size: 14px;
+            text-shadow: 0 1px 0 #FFFFFF;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        &_item {
+            box-shadow: inset 0 1px 0 0 rgba(204, 201, 196, 0.3), inset 0 -1px 0 0 rgba(204, 201, 196, 0.3);
+            padding: 30px 0;
+        }
+        &_url,
+        &_result a {
+            word-wrap: break-word;
+        }
+        &_url {
+            display: none;
+        }
+        &_result:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+        &_description {
+            color: #545B62;
+            font-size: 14px;
+            text-shadow: 0 1px 0 #FFFFFF;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        &_summary {
+            color: #545B62;
+            font-size: 20px;
+            line-height: 21px;
+            text-shadow: 1px 1px #FFFFFF;
+            font-weight: 400;
+            margin: 0 0 30px;
+            span {
+                color: #105CA3;
+            }
+        }
+        &_pager {
+            float: right;
+        }
+        .pager_text {
+            display: none;
+        }
+        .daterangepicker .calendar-table {
+            .prev span {
+                top: 5px;
+                &:before {
+                    content: '\e90f';
+                    font-size: 16px;
+                }
+            }
+            .next span {
+                top: 5px;
+                &:before {
+                    content: '\e90d';
+                    font-size: 16px;
+                }
+            } 
+        }
+        @include layout-medium {
+            .form-fields {
+                &-right .grid_col {
+                    padding-left: 0;
+                }
+                &--pages {
+                    margin-top: 25px;
+                    display: block;
+                    width: 100%;
+                }
+                &--search {
+                    width: 100%;
+                }
+            }
+        }
+        @media only screen and (max-width: 500px) {
+            .form_field.form_field--date {
+                overflow: visible;
+            }
+        }
+    }
+}

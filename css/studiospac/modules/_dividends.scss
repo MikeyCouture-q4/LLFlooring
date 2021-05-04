@@ -1,0 +1,16 @@
+/*----- Dividends Module -----*/
+
+.module-dividends {
+    .highcharts-series {
+        &-0 {
+            rect {
+                fill: $brand-color;
+            }
+        }
+        &-1 {
+            rect {
+                fill: $brand-color--alt;
+            }
+        }
+    }
+}

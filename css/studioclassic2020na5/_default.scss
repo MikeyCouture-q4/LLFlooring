@@ -1,0 +1,440 @@
+/*==================================
+ --------- DEFAULT STYLES ---------
+==================================*/
+body {
+    overflow-x: hidden;
+    color: $body-color;
+    font-family: $body-font;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+}
+
+/*---------- TYPOGRAPHY ----------*/
+h1, .h1 {
+    font-family: $heading-font;
+    font-size: 6rem;
+    font-weight: normal;
+    margin-bottom: 60px;
+    line-height: 1.16;
+    color: $dark-color;
+    @include layout-medium {
+        font-size: 3rem;
+    }
+}
+h2, .h2 {
+    font-family: $heading-font;
+    font-size: 4.8rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+    line-height: 1.33;
+    color: $dark-color;
+    @include layout-medium {
+        font-size: 2.4rem;
+    }
+}
+h3, .h3 {
+    font-family: $heading-font;
+    font-weight: normal;
+    font-size: 3.6rem;
+    line-height: 1.33;
+    margin: 20px 0 30px 0;
+    color: $dark-color;
+    @include layout-medium {
+        font-size: 2.4rem;
+    }
+}
+h4, .h4 {
+    color: $dark-color;
+    font-family: $heading-font;
+    font-size: 2.8rem;
+    line-height: 1.33;
+    font-weight: normal;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+h5, .h5 {
+    color: $dark-color;
+    font-family: $heading-font;
+    font-weight: normal;
+    font-size: 2.2rem;
+    line-height: 1.33;
+    margin-bottom: 20px;
+}
+a {
+    text-decoration: none;
+    color: $brand-color--alt;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/*------------ COMMON ------------*/
+img {
+    max-width: 100%;
+}
+input {
+    &[type="checkbox"],
+    &[type="radio"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+    &[type="checkbox"],
+    &[type="radio"] {
+        &+label {
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+            padding-left: 30px;
+            display: inline-block;
+            line-height: 1;
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border: 1px solid $brand-color--alt;
+                margin-right: 8px;
+                line-height: 1;
+                position: absolute;
+                left: 0;
+                top: 0px;
+            }
+        }
+        &:checked+label {
+            &:before {
+                background-color: $brand-color--alt;
+            }
+        }
+    }
+    &[type="radio"] {
+        &+label {
+            &:before {
+                border-radius: 100%;
+            }
+        }
+    } // Microsoft Edge cosmetic close
+    &::-ms-clear {
+        display: none;
+    }
+}
+iframe {
+    width: 100%;
+}
+
+
+
+/*------- HACKS AND FIXES -------*/
+.clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+/*------------ LISTS ------------*/
+.list {
+    list-style-type: disc;
+    padding-left: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    &--ordered {
+        list-style-type: decimal;
+    }
+    &--alpha {
+        list-style-type: lower-alpha;
+    }
+    &--roman {
+        list-style-type: lower-roman;
+    }
+    &--inside {
+        list-style-position: inside;
+    }
+}
+
+
+/*------- BUTTONS / INPUTS -------*/
+.input,
+.textarea,
+.dropdown,
+.upload,
+.submit,
+.button {
+    display: inline-block;
+    max-width: 100%; // Overwrite Browser rendering different heights (IE11)
+    // @include property-with-rem(height, 3.5rem);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 15px 20px;
+    background: transparent;
+    border: 1px solid $brand-color--alt;
+    color: $brand-color--alt;
+    border-radius: 0;
+    font-family: $body-font;
+    font-size: 1.4rem;
+    &::-ms-clear {
+        display: none;
+    }
+}
+.submit,
+.button,
+.upload,
+.dropdown {
+    cursor: pointer;
+}
+.textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 150px;
+}
+.upload {
+    line-height: 0;
+}
+.button {
+    font-family: $heading-font;
+    font-size: 1.7rem;
+    line-height: 1.1;
+    font-weight: 700;
+    transition: 0.3s ease-in-out;
+    border-color: $brand-color;
+    background: transparent;
+    color: $dark-color;
+    min-width: 210px;
+    text-align: center;
+    text-transform: capitalize;
+    &:hover,
+    &:focus {
+        color: $light-color;
+        background: $brand-color;
+        outline-color: $brand-color !important;
+    }
+    &--inverted {
+        background: $brand-color;
+        color: $light-color;
+        &:hover,
+        &:focus {
+            color: $dark-color;
+            background: transparent;
+        }
+    }
+    &--dark {
+        border-color: $light-color;
+        background-color: transparent;
+        color: $light-color;
+        &:hover,
+        &:focus {
+            background: $brand-color;
+            border-color: $light-color;
+            color: $light-color;
+            outline-color: $light-color !important;
+        }
+    }
+    &--cta {
+        border: 0 none;
+        padding: 0 0 0 15px;
+        font-size: 1.7rem;
+        background: transparent;
+        color: $brand-color--alt;
+        position: relative;
+        min-width: auto;
+        &:hover,
+        &:focus {
+            color: $brand-color--alt;
+            background: transparent;
+        }
+        &:before {
+            @include icon(e929);
+            font-size: 10px;
+            vertical-align: middle;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    &--meeting {
+        font-size: 1.3rem;
+        background-color: #f1af0f;
+        border-color: #f1af0f;
+        color: $dark-color;
+        font-weight: 700;
+        &:hover,
+        &:focus {
+            background-color: #dc9e27;
+            border-color: #dc9e27;
+            outline-color: #dc9e27 !important;
+            color: $dark-color;
+        }
+    }
+}
+.dropdown {
+    color: $dark-color;
+    background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' width='2048' height='2048' viewBox='0 0 2048 2048'%3E%3Cpath d='M2048 704l-128-128-896 896-896-896-128 128 1023.996 1024 1024.004-1024z' fill='#{svg-color('#{$brand-color--alt}')}'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 14px auto;
+    padding: 14px 95px 14px 30px;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    font-family: $heading-font;
+    border-color: $brand-color;
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+
+/*------------ TABLES ------------*/
+.table {
+    width: 100%;
+    margin: 16px 0;
+    thead {
+        background-color: $brand-color;
+        color: $light-color;
+        font-weight: normal;
+        font-family: $heading-font;
+        th {
+            text-align: left;
+            text-transform: none;
+        }
+    }
+    tbody {
+        tr:nth-child(odd) {
+            background-color: $light-color;
+        }
+        tr:nth-child(even) {
+            background-color: $grey-color;
+        }
+    }
+    th,
+    td,
+    tr>.grid_col {
+        margin: 0;
+        padding: 15px 10px;
+    }
+    th {
+        color: $light-color;
+    }
+    &--headless {
+        tr {
+            &:nth-child(even) {
+                background-color: transparent;
+            }
+            &:nth-child(odd) {
+                background-color: $grey-color;
+            }
+            &:first-child {
+                background-color: $brand-color;
+                text-align: left;
+                td {
+                    color: $light-color;
+                }
+            }
+        }
+    }
+    &-wrapper {
+        overflow-x: auto;
+    }
+    &--responsive {
+        @include layout-small {
+            thead {
+                display: none;
+            }
+            tbody {
+                border-top: 2px solid $brand-color;
+                border-bottom: 2px solid $brand-color;
+            }
+            td {
+                display: block;
+                &:before {
+                    content: attr(data-heading) ": ";
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    &--analyst {
+        thead {
+            background-color: transparent;
+            color: inherit;
+            th {
+                color: inherit;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                &:nth-child(odd) {
+                    background-color: $light-color;
+                }
+                &:nth-child(even) {
+                    background-color: $grey-color;
+                }
+            }
+        }
+        tbody {
+            tr:nth-child(odd),
+            tr:nth-child(even) {
+                background-color: transparent;
+            }
+            th {
+                color: $body-color;
+            }
+            td {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                &:nth-child(odd) {
+                    background-color: $light-color;
+                }
+                &:nth-child(even) {
+                    background-color: $grey-color;
+                }
+            }
+        }
+    }
+}
+
+/*--------- SPECIAL BOXES --------*/
+.code {
+    margin: 32px 0;
+    padding: 20px 15px;
+    background: $grey-color;
+    border-left: 3px solid rgba($brand-color, 0.5);
+    font-family: monospace, serif;
+    font-size: 1.4rem;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre;
+    overflow: hidden;
+    &_comment {
+        opacity: 0.5;
+    }
+}
+.quote {
+    margin: 32px 0;
+    padding: 20px 15px;
+    background: $grey-color;
+    border-left: 3px solid rgba($brand-color--alt, 0.5);
+    font-size: 1.4rem;
+    font-style: italic;
+    p:before {
+        margin-right: 5px;
+        @include icon('eb1b');
+    }
+    p:after {
+        margin-left: 5px;
+        @include icon('eb1c');
+    }
+}

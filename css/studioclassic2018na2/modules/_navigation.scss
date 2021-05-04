@@ -1,0 +1,361 @@
+/*------ Navigation Modules ------*/
+.nav {
+    &_close {
+        display: none;
+    }
+    &_guide {
+        @include sr-only();
+    }
+    @include layout-legacy {
+        &_guide {
+            display: none;
+        }
+    }
+    a[tabindex="-1"]:focus { /* navigation needs this for accessibility purpose  */
+        outline-width: 2px !important;
+        outline-style: dotted !important;
+        outline-color: inherit !important;
+    } // Header Pane Nav
+    &--main {
+        text-align: right;
+        font-size: 1.4rem;
+        .level1 {
+            transition: padding 0.3s ease-in-out;
+        }
+        @at-root .js--search-toggle & .level1 {
+            padding-right: 150px;   
+            @include layout-large {
+                padding-right: 0;
+            }         
+        }
+        li {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            a {
+                display: block;
+                padding: 10px 0;
+                margin: 0 10px;
+                color: $light-color;
+                font-weight: normal;
+                letter-spacing: 0.5px;
+                @at-root .js--header-small & {
+                    color: $body-color;
+                }
+                @include layout-large {
+                    padding: 10px 5px;
+                    margin: 0 5px;
+                    letter-spacing: 0;
+                }
+            }
+            &.selected > a,
+            &.selected.home .home > a,
+            &.expanded:not(.home) > a {
+                @include border-bottom-link($light-color);
+                @at-root .js--header-small & {
+                    @include border-bottom-link($body-color);
+                }
+            }
+        }
+        .home > a {
+            display: inline-block;
+            vertical-align: top;
+            margin: 10px;
+            position: relative;
+        }
+        .home .home > a {
+            margin: 0 10px;
+        }
+        .level2 {
+            display: inline-block;
+            vertical-align: top;
+            & > li {
+                padding: 10px 0;
+            }
+        }
+        .level3 {
+            display: none;
+            text-align: left;
+            padding-top: 10px;
+            white-space: nowrap;
+            position: absolute;
+            z-index: 200;
+            left: -10px;
+            top: 100%;
+            min-width: 200px;
+            @include bottom-to-top(rgba(181, 176, 172, 0.4));
+            border-top: none;
+            @at-root {
+                .nav--main .js--expanded .level3 {
+                    display: block;
+                }
+                .js--header-small & {
+                    background-color: $light-color;
+                }
+                .nav--main li:last-child > .level3 {
+                    right: -20px;
+                    left: auto;
+                    &:before {
+                        left: auto;
+                        right: 15px;
+                    }
+                }
+                .nav--main li.sfHover > .level3 {
+                    display: block;
+                }
+            }
+            li {
+                display: block;
+                padding: 0 10px;
+                &:last-child {
+                    border-bottom: 1px solid rgba(181, 176, 172, 0.4);
+                    padding-bottom: 10px;
+                }
+                &.selected>a,
+                &.expanded>a {
+                    color: $light-color;
+                    text-decoration: underline;
+                    background-image: none;
+                    @at-root .js--header-small & {
+                        color: $brand-color;
+                    }                  
+                }
+            }
+            a {
+                color: $light-color;
+                padding: 10px;
+                margin: 0;
+                @include font-size(13px);
+                text-transform: none;            
+            }
+        }
+    } // Navigation Page Nav
+    &--secondary {
+        background: $brand-color;
+        text-align: center;
+        line-height: 1.25;
+        letter-spacing: 1px;
+        @at-root {
+            .js--sticky .nav--secondary {
+                position: fixed;
+                width: 100%;
+                z-index: 200;
+                background: rgba($brand-color, 0.9);
+                box-shadow: rgba($dark-color, 0.2) 0px 2px 20px;
+            }
+        }
+        @include layout-legacy {
+            display: none;
+        }
+        .level1 {
+            @include fit-and-center($layout-width);
+            @include layout-legacy {
+                max-width: none;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            &>li {
+                display: none;
+                &.selected,
+                &.expanded {
+                    display: block;
+                    &>a {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .level2 {
+            &>li {
+                display: none;
+                &.selected,
+                &.expanded {
+                    display: block;
+                    &>a {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .level3 {
+            text-align: center;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: stretch;
+            justify-content: center;
+            @at-root & {
+                @media screen and (min-width: 1025px) {
+                    /* to override superfish on desktop */
+                    display: flex !important;
+                    opacity: 1 !important;
+                }
+            }
+            & > li {
+                display: inline-block;
+                vertical-align: top;
+                padding: 14px 12px;
+                a {
+                    color: $light-color;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding: 6px 0;
+                    @include border-bottom-link($brand-color);
+                    @at-root .js--sticky & {
+                        @include border-bottom-link(rgba($brand-color, 0));
+                    }
+                    &:hover,
+                    &:focus {
+                        @include border-bottom-link($light-color);                        
+                    }
+                }
+                &.selected {
+                    a {
+                        @include border-bottom-link($light-color);                        
+                    }
+                }
+            }
+        }
+    }
+    &--mobile {
+        background-color: transparent;
+        text-align: right;
+        letter-spacing: 1px;
+        font-size: 1.3rem;
+        line-height: 1.25;
+        display: none;
+        @include layout-legacy {
+            display: block;
+        }
+        a {
+            display: block;
+            position: relative;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border-bottom: 1px solid $grey-color;
+        }
+        .level1 {
+            &>li.expanded,
+            &>li.selected {
+                display: block;
+                &>a {
+                    display: block;
+                }
+            }
+        }
+        .level2 {
+            > li {
+                display: block;
+                margin: 0 -30px 0 -20px;
+                a {
+                    margin: 0 30px 0 20px;
+                }
+                &.has-children>a:after {
+                    // content: "\edc2";
+                    @include icon('edc2');
+                    color: $brand-color;
+                    position: absolute;
+                    right: 3px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 12px;
+                }
+                &.expanded,
+                &.selected {
+                    background-color: $grey-color;
+                    &>a {
+                        display: block;
+                    }
+                }
+                &.js--expanded {
+                    >a:after {
+                        content: "\edba";
+                    }
+                    .level3 {
+                        display: block;
+                    }
+                }
+            }
+        }
+        .level3 {
+            background-color: $brand-color;
+            position: relative;
+            text-align: left;
+            padding: 15px 0;
+            padding-left: 25%;
+            display: none;
+            @at-root .nav--secondary .js--expanded .level3 {
+                display: block;
+            }
+            &:before {
+                content: '';
+                top: -10px;
+                position: absolute;
+                right: 90px;
+                border-bottom: 11px solid $brand-color;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+            }
+            & > li {
+                display: block;
+                padding: 0;
+                &.selected a {
+                    background: transparent;
+                }
+                a {
+                    color: $light-color;
+                    padding: 10px;
+                    text-transform: none;
+                    border-bottom: 0 none;
+                    &:hover,
+                    &:focus {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    } // Page Not Found
+    &--sitemap {
+        @include fit-and-center($layout-width);
+        padding-top: $module-vspace;
+        padding-bottom: $module-vspace;
+        a {
+            display: inline-block;
+        }
+        .level1,
+        .level2 {
+            &>li:not(:last-of-type) {
+                margin-bottom: 35px;
+            }
+            &>li {
+                &>a,
+                &>a:visited {
+                    margin-bottom: 15px;
+                    @include font-size(24px);
+                    color: $dark-color;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .level3 {
+            &>li {
+                padding: 5px 0;
+                &>a {
+                    @include font-size(14px);
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .level2 {
+            &>li>a {
+                margin-bottom: 5px;
+            }
+        }
+        .level3 {
+            &>li {
+                padding-left: 15px;
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+.module-news-details {
+    pre {
+        font-family: "arial", sans-serif;
+    } //newswire
+    @import '../_global/newswire/gnw';
+    @import '../_global/newswire/bw';
+    @import '../_global/newswire/cnw';
+}

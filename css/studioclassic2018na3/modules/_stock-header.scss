@@ -1,0 +1,33 @@
+/*------ Stock Header Module -----*/
+.module-stock-header {
+    font-size: 1.2rem;
+    color: $light-color;
+    padding: 5px 0;
+    text-align: right;
+    br{
+        display: none;
+    }
+    .module{
+        &_container--inner{
+            &>span>span{
+                margin-left: 15px;
+            }
+        }
+    }
+    &_description1,
+    &_stock-price{
+        .stock-one &{
+            font-weight: bold;
+        }
+        
+    }
+    @include layout-small{
+        br{
+            display: block;
+            &+span{
+                margin-left: 0 !important;
+            }
+        }
+        text-align: center;
+    }
+}

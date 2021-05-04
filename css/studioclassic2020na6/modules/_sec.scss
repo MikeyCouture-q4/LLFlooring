@@ -1,0 +1,108 @@
+/*-------- SEC Module CSS --------*/
+.module-sec {
+    .module {
+        &_header {
+            display: block;
+            background-color: $brand-color--alt;
+            &-text {
+                padding: 20px 15px;
+                color: $light-color;
+                font-size: 1.7rem;
+                font-family: $heading-font;
+            }
+        }
+        &_item {
+            padding: 0;
+            &:nth-child(odd) {
+                background-color: $light-color;
+            }
+            &:after {
+                content: none;
+            }
+            .grid_col {
+                vertical-align: middle;
+                padding: 20px 15px;
+            }
+            .module-sec_filing {
+                font-weight: bold;
+            }
+        }
+        @include layout-medium {
+            &_header {
+                display: none; // For the Module
+                &+.module_item {
+                    border-top: 2px solid $brand-color;
+                }
+            }
+            &_item {
+                padding: 15px 0; // For the widget
+                &:first-child {
+                    border-top: 2px solid $brand-color;
+                }
+                &:last-child {
+                    border-bottom: 2px solid $brand-color;
+                }
+                .grid_col {
+                    padding: 0 5px;
+                } // For the module
+                &+.module_footer {
+                    border-bottom: 2px solid $brand-color;
+                }
+            }
+        }
+        &_options {
+            @include layout-medium {
+                select {
+                    display: block;
+                    margin: 10px 0;
+                }
+            }
+        }
+        @include layout-small {
+            &_rss {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    &_download-list {
+        &-item {
+            display: inline-block;
+        }
+        .module_link {
+            margin: 0;
+        }
+        .q4icons_icon:before {
+            font-size: 2.4rem;
+        }
+    }
+    @include layout-legacy {
+        .module_options .grid_col:not(:first-child) {
+            margin-top: 20px;
+        }
+    }
+    @include layout-medium {
+        &_date,
+        &_filer,
+        &_filing,
+        &_description {
+            margin-bottom: 15px;
+        }
+    }
+    &-details {
+        &_date,
+        &_description {
+            margin-bottom: 15px;
+        }
+        &_download-list {
+            &-item {
+                display: inline-block;
+            }
+            .module_link {
+                margin: 0;
+            }
+            .q4icons_icon:before {
+                font-size: 2.4rem;
+            }
+        }
+    }
+}

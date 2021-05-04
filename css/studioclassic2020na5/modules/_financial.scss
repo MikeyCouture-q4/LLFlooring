@@ -1,0 +1,374 @@
+/*--- Financial Report Modules ---*/
+.module-financial {
+    &-year {
+        .module {
+            &_options {
+                text-align: left;
+            }
+            &_cover {
+                margin-bottom: 15px;
+                img {
+                    display: inline-block;
+                    vertical-align: top;
+                    border: 1px solid $brand-color--alt;
+                    @at-root .module-financial-year .module-financial_annual-archive .module_cover img {
+                        max-width: 180px;
+                        @include layout-legacy {
+                            max-width: none;
+                        }
+                    }
+                }
+            }
+            &_item {
+                padding: 0;
+                &~.module_item {
+                    border: none;
+                }
+            }
+            &_links {
+                margin: 0;
+            }
+        }
+        .module-financial {
+            &_year {
+                text-align: center;
+            }
+            &_annual-archive {
+                @include layout-medium {
+                    margin-top: 25px;
+                }
+            }
+        }
+    }
+    &-quarter {
+        .module {
+            &_item {
+                padding: 0;
+                border: 0 none;
+                &:not(:first-child) {
+                    margin-top: 15px;
+                }
+                h3 {
+                    background-color: $brand-color;
+                    color: $light-color;
+                    font-size: 2.2rem;
+                    padding: 13px 50px 13px 20px;
+                    margin: 0;
+                    position: relative;
+                    cursor: pointer;
+                    &:before {
+                        @include icon("e92b");
+                        position: absolute;
+                        right: 25px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        font-size: 23px;
+                    }
+                }
+                &.js--active {
+                    h3 {
+                        background-color: $brand-color--alt;
+                    }
+                    h3:before {
+                        content: '\e92a';
+                    }
+                }
+            }
+            &_links {
+                background-color: $grey-color;
+                padding: 20px;
+                & > .grid_col {
+                    display: inline-block;
+                    padding-right: 20px;
+                }
+            }
+            &_link {
+                margin-bottom: 10px;
+                font-size: 1.6rem;
+                font-weight: normal;
+                text-transform: none;
+            }
+        }
+    }
+    &-table {
+        &_header {
+            font-family: $heading-font;
+            font-size: 1.7rem;
+            background-color: $brand-color;
+            color: $light-color;
+            &-year-container {
+                text-align: center;
+            }
+            &-year,
+            &-category.grid_col {
+                padding: 15px;
+            }
+        }
+        &_body {
+            &-row {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                &:nth-child(even) {
+                    background-color: $grey-color;
+                }
+            }
+            &-year-container {
+                text-align: center;
+            }
+            &-year,
+            &-category.grid_col {
+                padding: 20px 15px;
+            }
+        }
+        &_item {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.8rem;
+            font-weight: normal;
+            &~.module_item {
+                margin-right: 5px;
+            }
+            &--empty {
+                opacity: 0.1;
+            }
+            @include layout-medium() {
+                margin-right: 10px;
+            }
+            @include layout-small() {
+                margin: 5px;
+            }
+        }
+        .slick {
+            &-slider {
+                display: inline-block;
+                padding: 0;
+            }
+            &-slide:focus {
+                outline: none;
+            }
+            &-arrow {
+                position: absolute;
+                top: 50%;
+                transform: translate(0, -50%);
+                cursor: pointer;
+                z-index: 10;
+            }
+            &-prev {
+                left: 10px;
+            }
+            &-next {
+                right: 10px;
+            }
+            &-disabled {
+                opacity: 0.1;
+                cursor: default;
+            }
+        }
+    }
+    &-mashup {
+        .module_body {
+            max-height: 300px;
+            overflow: hidden;
+            position: relative;
+            & > *:first-child,
+            &  >style + p {
+                margin-top: 0;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 50px;
+                z-index: 1;
+                background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%);
+                background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%);
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#70ffffff', endColorstr='#ffffff', GradientType=0);
+            }
+        }
+        h4,
+        .h4 {
+            margin-top: 16px;
+        }
+        .module-financial-mashup_documents .module_links {
+            & + h4,
+            & + .h4 {
+                margin-top: 30px;
+            }
+            & > div {
+                background-color: $grey-color;
+                padding: 15px;
+                margin-bottom: 1px;
+            }
+            .module_link {
+                margin: 0;
+            }
+        }
+        .module_options {
+            .button {
+                width: 100%;
+                min-width: auto;
+                outline-color: $brand-color;
+                &.js--selected {
+                    color: $light-color;
+                    background-color: $brand-color;
+                }
+            }
+        }
+        .button.button--cta {
+            width: auto;
+            display: inline-block;
+        }
+        @media only screen and (min-width: 769px) {
+            .module_options--mobile {
+                display: none;
+            }
+        }
+        @include layout-medium {
+            .module_options--desktop {
+                display: none;
+            }
+        }
+    }
+    &-latest {
+        background-image: linear-gradient(rgba($dark-color, 0.6),rgba($dark-color, 0.6)), url($host + '/design/results-background.png');
+        .module_container--outer {
+            position: relative;
+        }
+        .module-financial {
+            &_type-year {
+                border-top: 15px solid $brand-color--alt;
+                font-family: $heading-font;
+                font-size: 2.7rem;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 25px 50px 60px 50px;
+                overflow: hidden;
+                transform: translate(20px, -95px);
+            }
+            &_type-text {
+                font-size: 6rem;
+                position: relative;
+                z-index: 1;
+            }
+            &_year-text {
+                position: relative;
+                z-index: 1;
+            }
+            &_shape {
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: calc(100% - 60px);
+                    background-color: lighten($brand-color, 5.49);
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 200%;
+                    height: 100%;
+                    background-color: lighten($brand-color, 5.49);
+                    transform: rotate(-15deg) translate(-25px, -50px);
+                    transform-origin: center center;
+                }
+            }
+        }
+        .module_links {
+            margin-left: 200px;
+            margin-bottom: 50px;
+            margin-top: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            & > div {
+                flex-basis: 25%;
+                max-width: 25%;
+                padding-right: 20px;
+                text-align: left;
+            }
+            .module_link {
+                color: $light-color;
+                font-size: 2.2rem;
+                font-family: $heading-font;
+                text-align: left;
+                position: relative;
+                padding-top: 5px;
+                padding-bottom: 15px;
+                padding-left: 70px;
+                transition: 0.3s ease-in-out;
+                margin: 5px 15px 15px 15px;
+                .q4icons_icon:before {
+                    width: 50px;
+                    text-align: center;
+                    font-size: 48px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+                &-text {
+                    position: relative;
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 55px;
+                        height: 1px;
+                        background-color: $light-color;
+                        transform: translateY(15px);
+                        transition: 0.3s ease-in-out;
+                    }
+                }
+                &:hover {
+                    color: adjust-hue($brand-color--alt, -18);
+                    text-decoration: none;
+                    .module_link-text:after {
+                        background-color: adjust-hue($brand-color--alt, -18);
+                    }
+                }
+            }
+        }
+        @include layout-large {
+            .module_links {
+                & > div {
+                    max-width: 50%;
+                    flex-basis: 50%;
+                }
+            }
+        }
+        @include layout-medium {
+            h3 {
+                text-align: left;
+            }
+            .module-financial {
+                &_type-year {
+                    font-size: 2rem;
+                    line-height: 1.3;
+                    left: auto;
+                    right: 0;
+                    padding: 0px 35px 55px 35px;
+                    transform: translate(-20px, -95px);
+                }
+                &_type-text {
+                    font-size: 4.2rem;
+                }
+            }
+            .module_links {
+                margin-left: 0;
+                margin-bottom: 25px;
+                margin-top: 50px;
+                & > div {
+                    max-width: 100%;
+                    flex-basis: 100%;
+                }
+            }
+        }
+    }
+}

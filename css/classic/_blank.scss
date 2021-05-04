@@ -1,0 +1,403 @@
+/*==================================
+ ------------ BLANK CSS -----------
+==================================*/
+
+
+/*-------- Layout Specific -------*/
+
+.layout {
+    &--home {
+        .pane--content {
+            text-align: center;
+        }
+    }
+    &_footer {
+        background: $dark-color;
+    }
+    @include layout-legacy {
+        &.js--mobile {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+        }
+    }
+}
+
+
+/*--------- Pane Specific --------*/
+
+.pane {
+    &--header {
+        position: relative;
+        background-color: $light-color;
+        z-index: 10;
+        .pane_inner {
+            @include fit-and-center($layout-width);
+        }
+        .module-logo img {
+            margin-bottom: -10px;
+        }
+        .module,
+        .nav {
+            vertical-align: baseline;
+        }
+        .layout_toggle {
+            display: none;
+            text-align: right;
+            &-button {
+                font-size: 3.6rem;
+                background: transparent;
+                padding: 0;
+                border: 0 none;
+            }
+            [class^="q4-icon_"] {
+                &:focus {
+                    outline: none;
+                }
+                @at-root .js--mobile & {
+                    &:before {
+                        content: unicode(ed6d);
+                    }
+                }
+            }
+        } // Mobile Styles
+        @include layout-legacy {
+            .pane_inner {
+                height: $mobile-header-height;
+                padding-top: 20px;
+            }
+            .module {
+                vertical-align: middle;
+            }
+            .module-logo img {
+                margin-bottom: 0;
+            }
+            .layout_toggle {
+                display: inline-block;
+            }
+            .nav,
+            .module-search {
+                display: none;
+            }
+        }
+    }
+    &--banner {
+        background: $lighten-color url($host + '/design/banner/q4-tall-banner.jpg') 50% 90%;
+        color: #fff;
+        .pane_inner {
+            position: relative;
+            @include fit-and-center($layout-width);
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        h1 {
+            margin: 0;
+            @include layout-medium {
+                margin-bottom: 32px;
+            }
+        }
+        @include layout-legacy {
+            text-align: center;
+        }
+    }
+    &--navigation {
+        // Desktop Style
+        background: $brand-color;
+        .module-search {
+            display: none;
+        } // Mobile Styles
+        @include layout-legacy {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            right: 0;
+            bottom: 100%;
+            transition: 0.5s ease-in-out;
+            overflow-y: scroll;
+            z-index: 120;
+            @at-root .js--mobile & {
+                top: $mobile-header-height;
+                bottom: 0;
+            }
+            .pane_inner {
+                padding: 0;
+            }
+            .module-search {
+                display: block;
+                &_input {
+                    width: 100%;
+                    max-width: none;
+                    padding: 20px;
+                    border: none;
+                    background-color: darken($brand-color, 7.5%);
+                    color: #fff;
+                    text-transform: uppercase; /// For some reason, these have to be separated
+                }
+                &_button {
+                    top: 20px;
+                    right: 20px;
+                    background-position: 0 -100%;
+                }
+            }
+        }
+    }
+    &--breadcrumb {
+        // Desktop Style
+        background: $brand-color;
+        .pane_inner {
+            @include fit-and-center($layout-width);
+            @include layout-legacy {
+                max-width: none;
+            }
+        }
+    }
+    &--content {
+        .module {
+            padding-top: $module-vspace;
+            padding-bottom: $module-vspace;
+            &_container {
+                &--outer {
+                    @include fit-and-center($layout-width);
+                }
+            }
+            &--thin {
+                padding-top: $module-vspace--thin;
+                padding-bottom: $module-vspace--thin;
+            }
+            &--thin-top {
+                padding-top: $module-vspace--thin;
+            }
+            &--thin-bottom {
+                padding-bottom: $module-vspace--thin;
+            }
+            &--thick {
+                padding-top: $module-vspace--thick;
+                padding-bottom: $module-vspace--thick;
+            }
+            &--thick-top {
+                padding-top: $module-vspace--thick;
+            }
+            &--thick-bottom {
+                padding-bottom: $module-vspace--thick;
+            }
+            &--no-padding {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+            &--no-padding-top {
+                padding-top: 0;
+            }
+            &--no-padding-bottom {
+                padding-bottom: 0;
+            } // Sitemap
+            &-sitemap {
+                padding-bottom: $module-vspace--thin;
+            }
+        }
+    }
+    &--footer {
+        padding-top: 60px;
+        font-size: 1.4rem;
+        .pane_inner {
+            @include fit-and-center($layout-width);
+        }
+        .module {
+            // Module Titles
+            &_title {
+                margin-bottom: 20px;
+                font-size: 2rem;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+            &_error-container {
+                margin-bottom: 20px;
+                li {
+                    margin-bottom: 16px;
+                }
+            }
+            &_introduction {
+                display: none;
+            } // Quick Links
+            &-links {
+                text-transform: uppercase;
+                li {
+                    line-height: 1.4;
+                }
+            } // Mailing List Signup
+            &-subscribe {
+                &_email label {
+                    position: absolute !important;
+                    width: 1px !important;
+                    height: 1px !important;
+                    padding: 0 !important;
+                    margin: -1px !important;
+                    overflow: hidden !important;
+                    clip: rect(0, 0, 0, 0) !important;
+                    border: 0 !important;
+                }
+                &_list-header,
+                &_email .module_required,
+                &_mailing-list,
+                .CaptchaContainer,
+                .module_actions {
+                    display: none;
+                }
+                &_form {
+                    tbody {
+                        display: block;
+                    }
+                    tr {
+                        width: 100%;
+                        margin: 0;
+                    }
+                }
+                &_mailing-list {
+                    margin: 20px 0 10px;
+                }
+                &_list {
+                    &>td {
+                        padding: 0;
+                    }
+                }
+                p {
+                    padding-right: 35px;
+                }
+                input[type="checkbox"]+label:before {
+                    border-color: $light-color;
+                }
+                &_mailing-list.js--revealed,
+                .module_actions.js--revealed {
+                    display: block;
+                }
+            }
+            &_input[type="text"],
+            &_input[type="email"] {
+                max-width: 300px;
+            }
+        }
+        .module:not(.module-embed) {
+            padding-bottom: 60px;
+        }
+    }
+    &--credits {
+        padding-bottom: 40px;
+        text-align: center;
+        color: $grey-color;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        .pane_inner {
+            @include fit-and-center($layout-width);
+        }
+        a {
+            color: $grey-color;
+        }
+        .button {
+            color: $light-color;
+            border: none;
+            background-color: $brand-color;
+        }
+    }
+}
+
+
+/*--------- Page Specific --------*/
+
+// to add in the extra padding on the top and bottom of the content pane
+// this ensure that the first module is getting enough space on top
+// and the last module gets enough space below it
+.page--no-alternating {
+    .pane {
+        &--content {
+            padding: 35px 0;
+        }
+    }
+    .module {
+        padding-top: $module-vspace--thin;
+        padding-bottom: $module-vspace--thin;
+    }
+}
+
+
+/*-------- Module Specific -------*/
+
+.module-overview {
+    p {
+        margin-bottom: 40px;
+    }
+    &_hidden {
+        display: none;
+        &.js--revealed {
+            display: block;
+        }
+    }
+    &_button {
+        &:before {
+            content: "Read More";
+        }
+        &.js--active:before {
+            content: "Show Less";
+        }
+    }
+}
+
+.module-why-invest {
+    h3 {
+        color: $body-color;
+    }
+    h4 {
+        font-size: 6rem;
+        color: $brand-color;
+        font-weight: 300;
+        margin-top: 0;
+    }
+    .grid {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .grid_col {
+        padding-bottom: 15px;
+        padding-right: $toast-gutter-width;
+        @media (min-width: $layout-small) {
+            & + .grid_col {
+                border-left: 1px solid rgba($grey-dark-color, 0.25);
+            }
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.module-cta {
+    position: fixed;
+    z-index: 1000;
+    right: 20px;
+    bottom: 20px;
+    [class*="q4-icon_"]:before {
+        font-size: 16px;
+        margin-right: 10px;
+        vertical-align: sub;
+    }
+    .button--cookie {
+        color: black;
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        cursor: pointer;
+        z-index: 1;
+        background-color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        [class*="q4-icon_"]:before {
+            font-size: 10px;
+            line-height: 20px;
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+    }
+}

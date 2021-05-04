@@ -1,0 +1,90 @@
+.module {
+    &-slider {
+        .module_container--outer {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        .module_container--inner {
+            display: table-cell;
+            vertical-align: middle;
+            height: 390px;
+        }
+        .slick-slider {
+            padding: 0 40px;
+            .slick-slide {
+                float: none;
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0 5px;
+            }
+        }
+        .slick-arrow:before {
+            font-size: 30px;
+        }
+        .module_add-to-calendar-reveal {
+            color: $light-color;
+        }
+        .module-slider_title {
+            h1 {
+                margin: 0;
+            }
+        }
+        .module_loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &_description {
+            font-size: 2.4rem;
+            line-height: 1;
+            margin-top: 10px;
+            .module_date-time {
+                font-size: inherit;
+            }
+            p {
+                margin: 10px 0;
+                &:first-child {
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                }
+            }
+            .module_links {
+                margin-top: 10px;
+                margin-bottom: 0;
+            }
+        }
+        .slick-dots {
+            display: inline;
+        }
+        .slick_autoplay-ctrl {
+            button {
+                background: none;
+                border: none;
+                padding: 0;
+                color: white;
+                margin-right: 10px;
+                vertical-align: middle;
+                &:before {
+                    // use !important to prevent issues with browser extensions that change fonts
+                    font-family: 'q4-icons' !important;
+                    speak: none;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1; // Better Font Rendering
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+            }
+            &--play:before {
+                content: "\ed85";
+            }
+            &--pause:before {
+                content: "\ed86";
+            }
+        }
+    }
+}

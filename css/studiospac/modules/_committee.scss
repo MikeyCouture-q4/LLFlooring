@@ -1,0 +1,116 @@
+/*- Committee Composition Widget -*/
+.module-committee {
+    .module_title {
+        text-align: center;
+    }
+    .module {
+        &_container--inner {
+            max-width: 1060px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        &_container {
+            &--desktop {
+                @include layout-medium {
+                    display: none;
+                }
+            }
+            &--tablet {
+                display: none;
+                @include layout-medium {
+                    display: block;
+                }
+            }
+        }
+        &_header {
+            display: block;
+            border-bottom: 1px solid $darken-color;
+            font-weight: normal;
+            color: $brand-color--alt;
+            &--desktop {
+                display: table-header-group;
+            }
+        }
+        &_item {
+            padding: 0;
+            &~.module_item {
+                border: 0;
+            }
+            &:nth-child(even) {
+                background: rgba(0, 0, 0, 0.05);
+            }
+        }
+        &_items-container {
+            padding: 15px;
+            margin: 0 0 15px 0;
+            background: $grey-color;
+        }
+    }
+    .grid_col {
+        padding: 20px 15px;
+        text-align: center;
+        &:first-child {
+            text-align: left;
+        }
+    }
+    .module_container--tablet {
+        .module-committee_name {
+            display: inline-block;
+            padding: 10px 0;
+        }
+        .module-committee_icon {
+            display: block;
+            text-align: center;
+            padding: 10px 0 10px 25px;
+        }
+        .module_header {
+            border: 0 none;
+        }
+        .module_items-container {
+            .grid_col {
+                padding: 0;
+            }
+        }
+    }
+    &_category {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        &:last-child {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .module_item:nth-child(even) {
+            background: transparent;
+        }
+        &.js--active {
+            .module_header {
+                color: $brand-color;
+                .module-committee_trigger:before {
+                    content: unicode(edba);
+                }
+            }
+        }
+    }
+    &_custom-role {
+        margin-left: 5px;
+    }
+    &_bio {
+        padding: 0 15px 20px;
+        text-align: left;
+        p {
+            margin: 0;
+            &:not(:last-of-type) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+    &_legend-container {
+        padding: 20px 15px;
+    }
+    &_legend {
+        display: inline-block;
+        margin-right: 30px;
+        margin-bottom: 5px;
+        [class*="q4-icon_"] {
+            margin-right: 5px;
+        }
+    }
+}

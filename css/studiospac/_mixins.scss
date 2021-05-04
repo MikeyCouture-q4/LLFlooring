@@ -1,0 +1,9 @@
+/// bottom orange line
+@mixin  bottom-line($color) {
+    content: '';
+    height: 3px;
+    width: 90px;
+    display: block;
+    background-color: #F1AF0F;
+    margin: auto;
+}

@@ -1,0 +1,103 @@
+/*------ Slider ------*/
+.module {
+    &-slider {
+        .slick-slider {
+            display: flex;
+            min-height: 370px;
+            align-items: center;
+            padding: 50px 0;
+            .slick-slide {
+                padding: 0;
+            }
+        }
+        .slick-arrow:before {
+            font-size: 30px;
+        }
+        .slick_autoplay-ctrl {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            button {
+                background: none;
+                border: none;
+                padding: 0;
+                color: $brand-color;
+                margin-right: 10px;
+                vertical-align: middle;
+                &:before {
+                    // use !important to prevent issues with browser extensions that change fonts
+                    font-family: 'q4-icons' !important;
+                    speak: none;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1; // Better Font Rendering
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                }
+            }
+            &--play:before {
+                content: "\ed85";
+            }
+            &--pause:before {
+                content: "\ed86";
+            }
+        }
+        .slick-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            button {
+                margin: 0;
+                padding: 0;
+                color: $brand-color;
+                border: 1px solid $brand-color;
+                border-radius: 100%;
+                background: transparent;
+                width: 12px;
+                height: 12px;
+                display: block;
+                opacity: 1;
+            }
+            .slick-active button {
+                border: 0 none;
+                background-image: -moz-linear-gradient(90deg, $brand-color--alt 0%, $brand-color 100%);
+                background-image: -webkit-linear-gradient(90deg, $brand-color--alt 0%, $brand-color 100%);
+                background-image: -ms-linear-gradient(90deg, $brand-color--alt 0%, $brand-color 100%);
+            }
+        }
+        .module_item {
+            padding: 0;
+            border: 0 none;
+        }
+        .module_add-to-calendar-reveal {
+            color: $light-color;
+        }
+        .module-slider_title {
+            h1 {
+                margin: 0 0 25px 0;
+            }
+        }
+        .module_loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .module_more {
+            mragin-top: 25px;
+        }
+    }
+    &-slider_description {
+        max-width: 450px;
+        .module_date-time {
+            font-size: inherit;
+        }
+        .module_links {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+    }
+
+}

@@ -1,0 +1,70 @@
+/*---------- Pager ----------*/
+.pager {
+    margin: 15px 0;
+    &_list-item {
+        display: inline-block;
+        vertical-align: top;
+        margin: 5px 0;
+        &:not(:last-child) {
+            button {
+                margin-right: 5px;
+            }
+        }
+    }
+    &_dots {
+        margin-right: 5px;
+        appearance: none;
+        border: 1px solid $brand-color;
+        color: $brand-color;
+        background-color: $grey-color;
+        border-radius: 3px;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 35px;
+        text-align: center;
+        cursor: default;
+    }
+    &_button {
+        appearance: none;
+        border: 1px solid $brand-color;
+        color: $brand-color;
+        background-color: $grey-color;
+        border-radius: 3px;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s;
+        cursor: pointer;
+        &:not(.js--disabled):hover {
+            color: $light-color;
+            background-color: $brand-color;
+        }
+        &:not(.js--disabled):focus {
+            color: $light-color;
+            background-color: $brand-color;
+            outline-color: $brand-color;
+        }
+        &.js--active {
+            color: $light-color;
+            background-color: $brand-color;
+        }
+        &.js--disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        [class^="q4-icon_"],
+        [class*=" q4-icon_"] {
+            color: inherit;
+            font-size: 1rem;
+            pointer-events: none;
+        }
+    }
+}

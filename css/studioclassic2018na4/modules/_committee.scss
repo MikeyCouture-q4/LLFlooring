@@ -1,0 +1,124 @@
+/*- Committee Composition Widget -*/
+.module-committee {
+    .module {
+        &_container {
+            &--desktop {
+                @include layout-medium {
+                    display: none;
+                }
+            }
+            &--tablet {
+                display: none;
+                border: 1px solid $grey-color;
+                border-radius: 5px;
+                @include layout-medium {
+                    display: block;
+                }
+            }
+        }
+        &_header {
+            display: block;
+            font-weight: normal;
+            background-color: $brand-color;
+            color: $light-color;
+            font-family: $heading-font;
+            @include font-size(17px);
+            &--desktop {
+                display: table-header-group;
+            }
+        }
+        &_item {
+            padding: 0;
+            &~.module_item {
+                border: 0;
+            }
+            &:nth-child(even) {
+                background: rgba(0, 0, 0, 0.05);
+            }
+        }
+        &_items-container {
+            padding: 15px;
+            margin: 0 0 15px 0;
+            background: $grey-color;
+        }
+    }
+    .grid_col {
+        padding: 15px 20px;
+        text-align: center;
+        &:first-child {
+            text-align: left;
+        }
+    }
+    .module_container--tablet {
+        .module-committee_name {
+            padding: 10px 0;
+            display: block;
+        }
+        .module-committee_icon {
+            padding: 10px 0 10px 25px;
+            display: block;
+        }
+        .module_header {
+            border: 0 none;
+            color: inherit;
+            font-family: $heading-font;
+            background-color: transparent;
+            .grid_col:first-child {
+                @include font-size(20px);
+            }
+            .module-committee_trigger:before {
+                color: $brand-color;
+                font-size: 14px;
+                font-weight: bold;
+            }
+        }
+        .module_items-container {
+            margin: 0;
+            padding: 0 20px 15px 20px;
+            background-color: transparent;
+            .grid_col {
+                padding: 0;
+            }
+        }
+    }
+    &_category {
+        & + .module-committee_category {
+            border-top: 1px solid $grey-color;
+        }
+        .module_item:nth-child(even) {
+            background: transparent;
+        }
+        &.js--active {
+            .module_header {
+                color: $brand-color;
+                .module-committee_trigger:before {
+                    content: "\edba";
+                }
+            }
+        }
+    }
+    &_custom-role {
+        margin-left: 5px;
+    }
+    &_bio {
+        padding: 0 15px 20px;
+        text-align: left;
+        p {
+            margin: 0;
+            &:not(:last-of-type) {
+                margin-bottom: 16px;
+            }
+        }
+    }
+    &_legend-container {
+        padding: 20px 15px;
+    }
+    &_legend {
+        display: inline-block;
+        margin-right: 30px;
+        margin-bottom: 5px;
+        [class*="q4-icon_"] {
+            margin-right: 5px;
+        }
+    }
+}

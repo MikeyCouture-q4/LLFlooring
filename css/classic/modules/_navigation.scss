@@ -1,0 +1,247 @@
+/*------ Navigation Modules ------*/
+
+.nav {
+    &_close {
+        display: none;
+    }
+    &_guide {
+        @include sr-only();
+    }
+    @include layout-legacy {
+        &_guide {
+            display: none;
+        }
+    }
+    a[tabindex="-1"]:focus { /* navigation needs this for accessibility purpose  */
+        outline-width: 2px !important;
+        outline-style: dotted !important;
+        outline-color: inherit !important;
+    } // Header Pane Nav
+    &--main {
+        line-height: 1;
+        text-align: right;
+        li {
+            display: inline-block;
+            a {
+                display: block;
+                padding: 50px 15px 30px;
+                color: $body-color;
+                font-weight: normal;
+            }
+            &.selected>a,
+            &.expanded>a,
+            a:hover,
+            a:focus {
+                padding: 50px 15px 28px;
+                border-bottom: 2px solid $brand-color;
+                color: $brand-color;
+            }
+        }
+    } // Navigation Page Nav
+    &--secondary {
+        background: $brand-color;
+        text-align: center;
+        font-weight: 400;
+        letter-spacing: 1.6px;
+        @include layout-legacy {
+            display: none;
+        }
+        .level1 {
+            &>li {
+                display: none;
+                &.selected,
+                &.expanded {
+                    display: block;
+                    &>a {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .level2 {
+            display: table;
+            width: 100%;
+            &>li {
+                position: relative;
+                display: table-cell;
+                &:hover,
+                &.selected,
+                &.expanded {
+                    background: darken($brand-color, 7.5%);
+                }
+                a {
+                    display: block;
+                    padding: 15px 20px;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+        .level3 {
+            position: absolute;
+            z-index: 100;
+            top: 100%;
+            left: 0;
+            display: none;
+            width: 100%;
+            min-width: 200px;
+            border-top: 2px solid $light-color;
+            &>li {
+                text-align: left;
+                a {
+                    background: darken($brand-color, 7.5%);
+                    &:hover,
+                    &:focus {
+                        background: $brand-color;
+                    }
+                }
+                &.selected {
+                    a {
+                        background: $brand-color;
+                    }
+                }
+            }
+        }
+    }
+    &--mobile {
+        display: none;
+        text-align: left;
+        letter-spacing: 1.6px;
+        @include layout-legacy {
+            display: block;
+        }
+        li {
+            border-top: 1px solid $darken-color;
+            &.has-children {
+                &>a:before {
+                    float: right;
+                    @include icon("edbe");
+                }
+            }
+            &.js--expanded {
+                &>a:before {
+                    content: unicode(edc2);
+                }
+            }
+        }
+        a {
+            display: block;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+        .level1 {
+            &>li {
+                display: block;
+                &.selected,
+                &.expanded {
+                    a {
+                        display: block;
+                    }
+                }
+                &.js--expanded {
+                    background: darken($brand-color, 7.5%);
+                    a {
+                        display: block;
+                    }
+                    .level2 {
+                        display: block;
+                    }
+                }
+                &>a {
+                    padding: 20px;
+                }
+            }
+        }
+        .level2 {
+            display: none;
+            &>li {
+                display: block;
+                &.js--expanded {
+                    .level3 {
+                        display: block;
+                    }
+                }
+                &>a {
+                    padding: 20px 20px 20px 48px;
+                    font-size: 1.6rem;
+                    &:focus + .level3 {
+                        display: block;
+                    }
+                }
+            }
+        }
+        .level3 {
+            display: none;
+            position: static;
+            border: none;
+            &>li {
+                display: block;
+                &>a {
+                    padding: 20px 20px 20px 72px;
+                    font-size: 1.6rem;
+                }
+            }
+        } // iOS Actionbar fix
+        @media screen and (max-width: 765px) and (orientation:landscape) {
+            // Height of actionbar
+            padding-bottom: 85px;
+        }
+    } // Page Not Found
+    &--sitemap {
+        @include fit-and-center($layout-width);
+        padding-top: $module-vspace;
+        padding-bottom: $module-vspace;
+        a {
+            display: inline-block;
+        }
+        .level1 {
+            column-count: 3;
+            column-gap: $toast-gutter-width;
+            & > li {
+                break-inside: avoid;
+                display: block;
+                &:not(:last-of-type) {
+                    margin-bottom: 35px;
+                }
+                &>a,
+                &>a:visited {
+                    margin-bottom: 15px;
+                    font-size: 2.4rem;
+                    color: $dark-color;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .level2,
+        .level3 {
+            & > li {
+                padding: 5px 0;
+                & > a {
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        .level2 {
+            &>li>a {
+                margin-bottom: 5px;
+            }
+        }
+        .level3 {
+            &>li {
+                padding-left: 15px;
+            }
+        }
+        @include layout-medium {
+            .level1 {
+                column-count: 2;
+            }
+        }
+        @include layout-small {
+            .level1 {
+                column-count: auto;
+                column-gap: normal;
+            }
+        }
+    }
+}

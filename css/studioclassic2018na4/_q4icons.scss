@@ -1,0 +1,87 @@
+/*==================================
+ -------- Q4 Modules Icons ---------
+==================================*/
+
+.q4icons {
+    .q4icons_icon:before {
+        @include icon(e91a);
+        font-size: 18px;
+        vertical-align: text-top;
+        display: inline-block;
+        padding-right: 5px;
+        min-width: 25px; /* min-width because sometimes icons don't align properly */
+        text-align: right;
+    }
+    .module_rss-link .q4icons_icon:before,
+    .module_link-rss .q4icons_icon:before {
+        content: "\eefa";
+    }
+    .module_add-to-calendar-reveal .q4icons_icon:before {
+        content: "\ea5f";
+        vertical-align: text-top;
+        padding-right: 5px;
+    }
+    [href$=".mp3"] .q4icons_icon:before,
+    [href$=".wmv"] .q4icons_icon:before,
+    [href$=".MP3"] .q4icons_icon:before,
+    [href$=".WMV"] .q4icons_icon:before {
+        content: "\e952";
+    }
+    [href$=".xls"] .q4icons_icon:before,
+    [href$=".xlsx"] .q4icons_icon:before,
+    [href$=".csv"] .q4icons_icon:before,
+    [href$=".XLS"] .q4icons_icon:before,
+    [href$=".XLSX"] .q4icons_icon:before,
+    [href$=".CSV"] .q4icons_icon:before {
+        content: "\eeae";
+    }
+    [href$=".mp4"] .q4icons_icon:before,
+    [href$=".flv"] .q4icons_icon:before,
+    [href$=".avi"] .q4icons_icon:before,
+    [href$=".MP4"] .q4icons_icon:before,
+    [href$=".FLV"] .q4icons_icon:before,
+    [href$=".AVI"] .q4icons_icon:before {
+        content: "\e95e";
+    }
+    [href$=".pdf"] .q4icons_icon:before,
+    [href$=".PDF"] .q4icons_icon:before {
+        content: "\e911";
+    }
+    .module_link-webcast .q4icons_icon:before,
+    .module_webcast-link .q4icons_icon:before {
+        content: "\e912";
+    }
+    .module_link-presentation .q4icons_icon:before {
+        content: "\e913";
+    }
+    .module_link-download .q4icons_icon:before {
+        content: "\e910";
+    } // sec icons
+    .module_link-sec .q4icons_icon:before {
+        content: "\e91a";
+    }
+    .module_link-sec[href$=".pdf"] .q4icons_icon:before {
+        content: "\e911";
+    }
+    .module_link-sec[href$=".rtf"] .q4icons_icon:before {
+        content: "\e91b";
+    }
+    .module_link-sec[href$=".xls"] .q4icons_icon:before {
+        content: "\e919";
+    }
+    .module_link-sec[href$=".zip"] .q4icons_icon:before {
+        content: "\e918";
+    }
+    [href^="tel:"] .q4icons_icon:before {
+        content: '\ea1d';
+        font-size: inherit;
+        vertical-align: baseline;
+        min-width: auto;
+    }
+    [href^="mailto:"] .q4icons_icon:before {
+        content: '\ea34';
+        font-size: inherit;
+        vertical-align: baseline;
+        min-width: auto;
+    }
+}

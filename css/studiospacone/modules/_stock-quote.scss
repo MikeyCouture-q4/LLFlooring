@@ -1,0 +1,62 @@
+/*------ Stock Quote Module ------*/
+.module-stock {
+    &.module-stock-historical .module-stock_empty {
+        @include layout-medium {
+            display: none;
+        }
+    }
+    &-quote .module_container--content {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .grid_col:nth-child(even) {
+        background: $grey-color;
+    }
+    &_lookup-title {
+        display: none;
+    }
+    &_up {
+        color: $success-color;
+    }
+    &_down {
+        color: $error-color;
+    }
+    &_label,
+    &_value {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        &:empty {
+            border-bottom: 0 none;
+            &:nth-child(even) {
+                background: transparent;
+            }
+        }
+        > span {
+            display: block;
+            padding: 15px 20px;
+        }
+    }
+    &_date {
+        margin-top: 25px;
+        text-align: right;
+        font-style: italic;
+        @include font-size(14px);
+    }
+    &-historical {
+        @include font-size(14px);
+        .module_options {
+            &-label,
+            &-select,
+            &-submit {
+                @include layout-medium {
+                    display: block;
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+    .stock-historical-range {
+        .module_options>*:not(:last-of-type) {
+            margin-bottom: 20px;
+        }
+    }
+}

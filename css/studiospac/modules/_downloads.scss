@@ -1,0 +1,151 @@
+/*----- Download List Module -----*/
+
+.module-downloads {
+    .module {
+        &_nav {
+            display: none;
+        }
+        &_item {
+            padding: 15px 0;
+        }
+    }
+    &_thumbnail,
+    &_description,
+    &_date {
+        display: none;
+    }
+    &_title {
+        position: relative;
+        &-link {
+            font-size: 1.8rem;
+            margin: 0 20px 0 0;
+        }
+    }
+    .q4icons_icon:before {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+    }
+    &-column {
+        height: calc(100% - 65px);
+        display: flex;
+        flex-direction: column;
+        h3 {
+            margin-top: 0;
+        }
+        .module_container--widget {
+            padding: 45px;
+            flex-basis: 100%;
+            color: $light-color;
+            background-image: linear-gradient(rgba($brand-blue,0.8), rgba($brand-blue,0.8)), url($host + '/images/520-x-235-2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            &:not(.js--loading) {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .module_loader {
+                align-self: center;
+            }
+        }
+        .module_item {
+            padding: 10px 0;
+            &:not(:first-child) {
+                margin-top: 20px;
+            }
+        }
+        .module-downloads_title-link {
+            font-size: 2.4rem;
+            line-height: 1;
+            font-family: $heading-font;
+            color: $light-color;
+            text-transform: none;
+            margin: 0 0 0 90px;
+            &:after {
+                content: '';
+                display: block;
+                width: 2px;
+                height: 43px;
+                position: absolute;
+                left: 65px;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba($light-color, 0.5);
+            }
+        }
+        .q4icons_icon:before {
+            font-size: 3.1rem;
+            right: auto;
+            left: 0;
+        }
+    }
+    &-grid {
+        padding: 35px;
+        height: 100%;
+        background-image: linear-gradient(rgba($brand-blue,0.75), rgba($brand-blue,0.75)), url($host + '/images/435-x-430.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: $light-color;
+        h3 {
+            margin-top: 0;
+            color: inherit;
+        }
+        a {
+            color: inherit;
+        }
+        .module-downloads_title-link {
+            margin-right: 0;
+            margin-left: 40px;
+            position: relative;
+        }
+        .q4icons_icon:before {
+            @include icon("e910");
+            font-size: 1.2rem;
+            right: auto;
+            left: -40px;
+            color: $brand-color--mod;
+        }
+    }
+    &-masonry {
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        &.grid_col {
+            padding: 35px;
+        }
+        .module_container--widget {
+            column-count: 2;
+            column-gap: 75px;
+        }
+        h3 {
+            margin-top: 0;
+        }
+        .module_item {
+            display: inline-block;
+            width: 100%;
+            border-bottom: 1px solid $grey-color;
+        }
+        .module-downloads_title-link {
+            margin-right: 0;
+            margin-left: 40px;
+            position: relative;
+        }
+        .q4icons_icon:before {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            @include icon("e910");
+            font-size: 1.2rem;
+            left: -40px;
+            color: $brand-color--mod;
+        }
+        @include layout-medium {
+            .module_container--widget {
+                column-count: 1;
+            }
+        }
+    }
+}

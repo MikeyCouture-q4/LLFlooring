@@ -1,0 +1,385 @@
+/*==================================
+ ----------- MODULE CSS -----------
+==================================*/
+
+
+/*-------- All Module CSS --------*/
+.module {
+    // Hidden
+    &_header,
+    &_back-to-top,
+    &_anchor-target,
+    &_file-size,
+    &_file-type,
+    &_file-text {
+        display: none;
+    } // Small Spacing
+    &_nav,
+    &_headline,
+    &_location,
+    &_speakers,
+    &_links,
+    &_body,
+    &_options,
+    &_not-found {
+        margin-bottom: 10px;
+    }
+    &_speaker {
+        position: relative;
+        padding-left: 30px;
+        .q4icons_icon {
+            position: absolute;
+            left: 0;
+        }
+    } // Large Spacing
+    &_error-container {
+        margin-bottom: 30px;
+        color: $error-color;
+    }
+    &_add-to-calendar {
+        &-reveal {
+            color: $brand-color--alt;
+            cursor: pointer;
+            .dark & {
+                color: #fff;
+            }
+        }
+        &-list {
+            display: none;
+            &:after {
+                content: "Select your Calendar";
+                display: block;
+                margin-top: 15px;
+                @include font-size(14px);
+                text-align: center;
+            }
+            @at-root .fancybox-container & {
+                padding: 0 30px;
+            }
+        }
+        &-item {
+            display: inline-block;
+            margin: 0 10px;
+            &--ics {
+                display: none;
+            }
+        }
+        &-link {
+            @include font-size(24px);
+        }
+        &.js--hidden {
+            display: none;
+        }
+    }
+    &_actions,
+    &_pager {
+        margin-top: 20px;
+    }
+    &_date-time {
+        margin-bottom: 15px;
+        @include font-size(15px);
+        font-family: $secondary-font;
+        font-style: italic;
+    }
+    &_error-container {
+        display: block;
+        ul {
+            padding-left: 18px;
+            list-style-type: disc;
+            &>li {
+                line-height: 1.5;
+            }
+        }
+        &>br {
+            display: none;
+        }
+        &>span {
+            display: block;
+            line-height: 1.5;
+            &:before {
+                @include icon("ec6b");
+                margin-right: 5px;
+            }
+        }
+    }
+    &_headline {
+        line-height: 1.5;
+        margin-bottom: 20px;
+        @include font-size(18px);
+        &-link {
+            color: $body-color;
+        }
+    }
+    &_image {
+        display: inline-block;
+        max-width: 30%;
+        margin-bottom: 16px;
+        &--right {
+            float: right;
+            margin-left: 32px;
+        }
+        &--left {
+            float: left;
+            margin-right: 32px;
+        }
+    }
+    &_introduction {
+        margin-bottom: 35px;
+    }
+    &_item {
+        padding-top: 30px;
+        padding-bottom: 10px;
+        &~.module_item {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+    }
+    &_label {
+        display: inline-block;
+        margin-bottom: 5px;
+        @include font-size(14px);
+        &+.module_required {
+            @include font-size(14px);
+        }
+    }
+    &_links {
+        >*,
+        li,
+        .module_presentation {
+            display: inline;
+            @include layout-small {
+                display: block;
+            }
+        }
+    }
+    &_links {
+        &.module_links--stack {
+            >*,
+            li,
+            .module_presentation {
+                display: block;
+            }
+        }
+    }
+    &_link {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 15px 0 0;
+        padding-bottom: 6px;
+        @include font-size(17px);        
+        font-family: $secondary-font;
+        font-style: italic;
+        &:hover {
+            color: $brand-color;
+        }
+        // Make sure the icons are center aligned
+        &>&-text,
+        &>i,
+        &>span {
+            vertical-align: middle;
+        }
+        &>i:before {
+            display: block;
+        } // CMS Module Definition work-around
+        &[style="DISPLAY:block;"],
+        &[style="display: block;"] {
+            display: inline-block !important;
+        }
+    }
+    &_loader {
+        margin: 0;
+        display: inline-block;
+        animation: spin 1s linear infinite;
+    }
+    &_message {
+        display: block;
+        margin: 16px 0; // Overwrite Default Module Functionality
+        &[style$="hidden;"],
+        &:empty {
+            display: none;
+        }
+        &--success {
+            color: $success-color;
+            &:before {
+                @include icon("ed71");
+                margin-right: 5px;
+            }
+        }
+        &--error {
+            color: $error-color;
+            &:before {
+                @include icon("ed4f");
+                margin-right: 5px;
+            }
+        }
+    }
+    &_nav {
+        &-link,
+        .ModuleYearLink,
+        &-link:visited,
+        .ModuleYearLink:visited {
+            display: inline-block;
+            margin-right: 5px;
+            padding: 15px 20px;
+            border: 2px solid $brand-color;
+            color: $body-color;
+            font-weight: normal;
+            &.selected,
+            &.selected:visited {
+                background-color: $brand-color;
+                color: $light-color;
+            }
+            @include layout-small {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    &_options {
+        margin-bottom: 30px;
+        &-label,
+        &-select {
+            margin-right: 10px;
+        }
+        @include layout-small {
+            &-label,
+            &-select,
+            &-submit {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    &_pager {
+        a {
+            color: $body-color;
+            &[href] {
+                color: $brand-color;
+            }
+        }
+    }
+    &_reminder {
+        .module_label {
+            margin-right: 10px;
+        }
+        &.js--reminded {
+            display: none;
+        }
+    }
+    &_required {
+        color: $body-color;
+    }
+    &_required {
+        &-text {
+            @include font-size(13px);
+            color: $body-color;
+        }
+    }
+    &_rss {
+        float: right;
+        margin-top: 10px;
+        @include layout-medium {
+            margin-top: 0;
+        }
+    }
+    &_speakers {
+        li {
+            margin-bottom: 5px;
+        }
+    }
+    &_view-all-link {
+        @include font-size(17px);
+        text-transform: capitalize;
+    } // All Inputs
+    &_input[type="text"],
+    &_input[type="email"],
+    &_input[type="file"],
+    &_dropdown,
+    textarea.module_input {
+        display: block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        /* Text area demands width*/
+        width: 100%;
+        max-width: none;
+        height: 45px;
+        padding: 13px 20px;
+        border: 1px solid $brand-color--alt;
+        border-radius: 0;
+        font-family: inherit;
+        @include font-size(14px);
+        &::-ms-clear {
+            display: none;
+        }
+    }
+    &_input[type="file"] {
+        padding: 10px 20px;
+    }
+    textarea.module_input {
+        resize: vertical;
+    }
+    &_input[type="file"],
+    &_dropdown {
+        cursor: pointer;
+    }
+    &_input[type="file"] {
+        line-height: 1;
+        height: auto;
+    }
+    &_input {
+        &--brand-alt[type="text"] {
+            display: inline-block;
+            width: auto;
+            border: 1px solid $brand-color--alt;
+            background: transparent;
+        }
+    }
+    &_dropdown {
+        background: url($host+'/design/svg/q4-icon_chevron-down-black.svg') no-repeat right 20px center;
+        background-size: 14px 14px;
+        &::-ms-expand {
+            display: none;
+        }
+    } // All details modules
+    &-details {
+        .module {
+            &_date-time {
+                color: $brand-color;
+                margin-bottom: 15px;
+            }
+        }
+    } // meeting form button
+    &-cta {
+        position: fixed;
+        z-index: 1000;
+        right: 20px;
+        bottom: 20px;
+        [class*="q4-icon_"]:before {
+            font-size: 16px;
+            margin-right: 10px;
+            vertical-align: sub;
+        }
+        .button--cookie {
+            color: black;
+            position: absolute;
+            right: -10px;
+            top: -10px;
+            cursor: pointer;
+            z-index: 1;
+            background-color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            [class*="q4-icon_"]:before {
+                font-size: 10px;
+                line-height: 20px;
+                text-align: center;
+                display: block;
+                margin: auto;
+            }
+            &:focus {
+                outline-color: #fff;;
+            }
+        }
+    }    
+}

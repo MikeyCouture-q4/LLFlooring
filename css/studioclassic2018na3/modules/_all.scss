@@ -1,0 +1,387 @@
+/*==================================
+ ----------- MODULE CSS -----------
+==================================*/
+
+
+/*-------- All Module CSS --------*/
+.module {
+    // Hidden
+    &_header,
+    &_back-to-top,
+    &_anchor-target,
+    &_file-size,
+    &_file-type,
+    &_file-text {
+        display: none;
+    } // Small Spacing
+    &_nav,
+    &_headline,
+    &_location,
+    &_speakers,
+    &_links,
+    &_body,
+    &_options,
+    &_not-found {
+        margin-bottom: 10px;
+    } // Large Spacing
+    &_error-container {
+        margin-bottom: 30px;
+        color: $error-color;
+    }
+    &_actions,
+    &_pager {
+        margin-top: 20px;
+    }
+    &_date-time {
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        font-size: 1.4rem;
+        font-family: $body-font--alt;
+        position: relative;
+        &:after{
+            position: absolute;
+            content: '';
+            left:0;
+            bottom: 0;
+            
+            width: 40px;
+            height: 2px;
+            background: $brand-color;
+            -moz-transition: width 0.3s;
+            -webkit-transition: width 0.3s;
+            transition: width 0.3s; 
+        }
+        
+    }
+    &_error-container {
+        display: block;
+        ul {
+            padding-left: 18px;
+            list-style-type: disc;
+            &>li {
+                line-height: 1.5;
+            }
+        }
+        &>br {
+            display: none;
+        }
+        &>span {
+            display: block;
+            line-height: 1.5;
+            &:before {
+                @include icon("ec6b");
+                margin-right: 5px;
+            }
+        }
+    }
+    &_headline {
+        line-height: 1.5;
+        &-link {
+            color: $body-color;
+            &:hover {
+                color: #595959;
+            }
+        }
+    }
+    &_image {
+        display: inline-block;
+        max-width: 30%;
+        margin-bottom: 16px;
+        &--right {
+            float: right;
+            margin-left: 32px;
+        }
+        &--left {
+            float: left;
+            margin-right: 32px;
+        }
+    }
+    &_introduction {
+        margin-bottom: 35px;
+    }
+    &_item {
+        padding-top: 30px;
+        padding-bottom: 10px;
+        &~.module_item {
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        @at-root .grow-line &{
+            &:hover .module_date-time{
+                &:after{
+                    width: 100%;
+                }
+            }
+        }
+        
+    }
+    &_label {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-size: 1.4rem;
+        &+.module_required {
+            font-size: 1.4rem;
+        }
+    }
+    &_links {
+        >*,
+        li,
+        .module_presentation {
+            display: inline;
+            @include layout-small {
+                display: block;
+                .module_link{
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+    &_links {
+        &.module_links--stack {
+            >*,
+            li,
+            .module_presentation {
+                display: block;
+            }
+        }
+    }
+    &_link {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 15px 10px 0;
+        color: inherit;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        &:hover {
+            color:#595959;
+        }
+        // Make sure the icons are center aligned
+        &>&-text,
+        &>i,
+        &>span {
+            vertical-align: middle;
+        }
+        &>i:before {
+            display: block;
+        } // CMS Module Definition work-around
+        &[style="DISPLAY:block;"],
+        &[style="display: block;"] {
+            display: inline-block !important;
+        }
+    }
+    &_add-to-calendar {
+        &-reveal {
+            cursor: pointer;
+        }
+        &-list {
+            display: none;
+            &:after {
+                content: "Select your Calendar";
+                display: block;
+                margin-top: 15px;
+                font-size: 1.4rem;
+                text-align: center;
+            }
+            @at-root .fancybox-container & {
+                padding: 0 30px;
+            }
+        }
+        &-item {
+            display: inline-block;
+            margin: 0 10px;
+            &--ics {
+                display: none;
+            }
+        }
+        &-link {
+            font-size: 2.4rem;
+        }
+        &.js--hidden {
+            display: none;
+        }
+    }
+    &_loader {
+        margin: 0;
+        display: inline-block;
+        animation: spin 1s linear infinite;
+    }
+    &_message {
+        display: block;
+        margin: 16px 0; // Overwrite Default Module Functionality
+        &[style$="hidden;"],
+        &:empty {
+            display: none;
+        }
+        &--success {
+            color: $success-color;
+            &:before {
+                @include icon("ed71");
+                margin-right: 5px;
+            }
+        }
+        &--error {
+            color: $error-color;
+            &:before {
+                @include icon("ed4f");
+                margin-right: 5px;
+            }
+        }
+    }
+    &_nav {
+        &-link,
+        .ModuleYearLink,
+        &-link:visited,
+        .ModuleYearLink:visited {
+            display: inline-block;
+            margin-right: 5px;
+            padding: 15px 20px;
+            border: 2px solid $brand-color;
+            color: $body-color;
+            font-weight: normal;
+            &.selected,
+            &.selected:visited {
+                background-color: $brand-color;
+                color: $light-color;
+            }
+            @include layout-small {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    &_options {
+        margin-bottom: 30px;
+        &-label,
+        &-select {
+            margin-right: 10px;
+        }
+        @include layout-small {
+            &-label,
+            &-select,
+            &-submit {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    &_pager {
+        a {
+            color: $body-color;
+            &[href] {
+                color: $brand-color;
+            }
+        }
+    }
+    &_reminder {
+        .module_label {
+            margin-right: 10px;
+        }
+        .module_reminder-email[type="text"] {
+            width: auto;
+            display: inline-block;
+        }
+        .dropdown {
+            padding-top: 11px;
+            padding-bottom: 11px;
+            font-family: inherit;
+            font-size: 1.3rem;
+        }
+        &.js--reminded {
+            display: none;
+        }
+    }
+    &_required {
+        color: $body-color;
+    }
+    &_required {
+        &-text {
+            font-size: 1.3rem;
+            color: $body-color;
+        }
+    }
+    &_rss {
+        float: right;
+        margin-top: 10px;
+        @include layout-small {
+            float: none;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+    }
+    &_speakers {
+        li {
+            margin-bottom: 5px;
+        }
+    }
+    &_title {
+        text-transform: uppercase;
+    }
+    &_view-all-link {
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    } // All Inputs
+    &_input[type="text"],
+    &_input[type="email"],
+    &_input[type="file"],
+    &_dropdown,
+    textarea.module_input {
+        display: block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        /* Text area demands width*/
+        width: 100%;
+        max-width: none;
+        padding: 11px 20px;
+        border: 1px solid $grey-dark-color;
+        border-radius: 0;
+        font-family: inherit;
+        font-size: 1.3rem;
+        &::-ms-clear {
+            display: none;
+        }
+        @include layout-medium{
+            padding: 10px 20px;
+        }
+    }
+    textarea.module_input {
+        resize: vertical;
+    }
+    &_input[type="file"],
+    &_dropdown {
+        cursor: pointer;
+    }
+    &_input[type="file"] {
+        line-height: 1;
+    }
+    &_input {
+        &--brand-alt[type="text"] {
+            display: inline-block;
+            width: auto;
+            border: 1px solid $brand-color--alt;
+            background: transparent;
+        }
+    }
+    &_dropdown {
+        background: $grey-color url($host+'/design/svg/q4-icon_chevron-down-black.svg') no-repeat right 20px center;
+        background-size: 14px 14px;
+        &::-ms-expand {
+            display: none;
+        }
+    } // All details modules
+    &-details {
+        .module {
+            &_date-time {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+.container--narrow{
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}

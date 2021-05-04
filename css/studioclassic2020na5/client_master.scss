@@ -1,0 +1,13 @@
+// Welcome to the master stylesheet for client.css
+// Please choose @imports from the following list:
+// @import url(http://blank1.dev/css/client_master.css);
+@import 'variables';
+@import '../_global/mixins';
+@import 'icons';
+@import '../_global/plugins/slick';
+@import '../_global/plugins/cookiemonster';
+@import '../_global/plugins/fancybox';
+@import '../_global/plugins/jquery-ui';
+@import '../_global/plugins/selectbox';
+@import '../_global/plugins/daterangepicker';
+@import '../_global/plugins/mediaelementplayer';
